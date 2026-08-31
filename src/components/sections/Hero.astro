@@ -12,7 +12,6 @@ const empowerPart = highlightParts.slice(1).join(' ') || '';
 // eyebrow for the small tracking-widest line
 const eyebrowDisplay = (hero.eyebrow || '').toUpperCase();
 // subtitle is used as descriptive text (hidden on mobile to keep luxe minimal)
-const hasStats = hero.stats && hero.stats.length > 0;
 ---
 
 <section
@@ -20,7 +19,7 @@ const hasStats = hero.stats && hero.stats.length > 0;
   aria-label="Presentación — Luxe Nail Studio"
   class="relative overflow-hidden bg-black lg:bg-[#0a0a0a]"
 >
-  <!-- Background image (right 60%) + overlays -->
+  <!-- Background image (right 60%) + overlays — degradado suave a negro sin corte vertical -->
   <div class="absolute inset-0" aria-hidden="true">
     {/* image layer - 60% on desktop, full bleed on mobile */}
     <div class="absolute inset-0 lg:left-[40%] lg:w-[60%]">
@@ -32,9 +31,16 @@ const hasStats = hero.stats && hero.stats.length > 0;
         decoding="async"
         fetchpriority="high"
       />
+      {/* Degradado suave integrado en la propia imagen: de negro sólido a transparente con stops amplios */}
+      <div class="hidden lg:block absolute inset-0 bg-gradient-to-r from-black via-black/80 via-[40%] to-transparent"></div>
+      {/* Fundido extra w-[40%] con blur sutil para eliminar cualquier línea vertical */}
+      <div class="hidden lg:block absolute inset-y-0 left-0 w-[40%] bg-gradient-to-r from-black via-black/70 to-transparent blur-[0.5px]"></div>
     </div>
-    {/* main luxury fade: black left for legibility */}
-    <div class="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/30 lg:from-black lg:via-black/80 lg:via-[58%] lg:to-transparent"></div>
+    {/* Degradado lateral de transición entre contenido e imagen — w-32 evita corte */}
+    <div class="hidden lg:block absolute inset-y-0 left-[40%] -ml-16 w-32 bg-gradient-to-r from-black to-transparent blur-[1px]" aria-hidden="true"></div>
+    <div class="hidden lg:block absolute inset-y-0 left-[40%] w-[28%] bg-gradient-to-r from-black via-black/90 via-[35%] to-transparent" aria-hidden="true"></div>
+    {/* main luxury fade: black left for legibility — ajustado para lg */}
+    <div class="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/30 lg:from-black lg:via-black/85 lg:via-[38%] lg:to-transparent lg:to-[75%]"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 lg:hidden"></div>
     <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/55"></div>
     {/* subtle grain */}
@@ -53,7 +59,7 @@ const hasStats = hero.stats && hero.stats.length > 0;
           {thatPart}
         </span>
         <span
-          class="block -mt-2 font-light italic tracking-wide text-brand-300 sm:-mt-3 lg:-mt-5"
+          class="block -mt-2 font-semibold italic tracking-wide text-brand-300 sm:-mt-3 lg:-mt-5"
           style="font-family: var(--font-serif), Georgia, serif; color: #e8b4b8;"
         >
           <span class="text-[2.85rem] sm:text-[4rem] lg:text-[4.75rem] xl:text-[5.4rem] leading-none">
@@ -64,7 +70,7 @@ const hasStats = hero.stats && hero.stats.length > 0;
 
       <!-- Smallcaps subtitle -->
       <p class="mt-6 text-[10px] font-medium uppercase tracking-[0.32em] text-white/75 sm:mt-7 sm:text-[11px] sm:tracking-[0.38em] lg:text-xs">
-        {eyebrowDisplay || 'ELEGANCE AT YOUR FINGERTIPS'}
+        {eyebrowDisplay || 'ELEGANCIA AL ALCANCE DE TUS MANOS'}
       </p>
 
       <!-- Optional descriptive subtitle (uses CONTENT.hero.subtitle) - visible on desktop only to keep hero clean on mobile -->
@@ -89,42 +95,28 @@ const hasStats = hero.stats && hero.stats.length > 0;
 
       <!-- Three iconitos -->
       <div class="mt-10 flex flex-wrap gap-5 border-t border-white/10 pt-7 sm:gap-7 lg:mt-12">
-        <!-- Premium Products -->
+        <!-- Productos Premium -->
         <div class="flex items-center gap-2.5">
           <span class="flex size-7 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/85 backdrop-blur-sm">
             <Icon name="lucide:gem" class="size-3.5" aria-hidden="true" />
           </span>
-          <span class="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/70 sm:text-[11px]">Premium Products</span>
+          <span class="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/70 sm:text-[11px]">Productos Premium</span>
         </div>
-        <!-- Hygienic & Safe -->
+        <!-- Higiénico y Seguro -->
         <div class="flex items-center gap-2.5">
           <span class="flex size-7 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/85 backdrop-blur-sm">
             <Icon name="lucide:shield-check" class="size-3.5" aria-hidden="true" />
           </span>
-          <span class="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/70 sm:text-[11px]">Hygienic &amp; Safe</span>
+          <span class="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/70 sm:text-[11px]">Higiénico y Seguro</span>
         </div>
-        <!-- Expert Technicians -->
+        <!-- Técnicas Expertas -->
         <div class="flex items-center gap-2.5">
           <span class="flex size-7 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/85 backdrop-blur-sm">
             <Icon name="lucide:clock" class="size-3.5" aria-hidden="true" />
           </span>
-          <span class="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/70 sm:text-[11px]">Expert Technicians</span>
+          <span class="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/70 sm:text-[11px]">Técnicas Expertas</span>
         </div>
       </div>
-
-      <!-- Stats from CONTENT.hero.stats (luxe minimal, below iconitos) -->
-      {
-        hasStats && (
-          <dl class="mt-8 hidden grid-cols-3 gap-6 border-t border-white/5 pt-6 sm:grid">
-            {hero.stats.map((stat) => (
-              <div>
-                <dd class="font-serif text-xl font-semibold tracking-tight text-white lg:text-2xl">{stat.value}</dd>
-                <dt class="mt-1 text-[10px] font-medium uppercase tracking-widest text-white/50">{stat.label}</dt>
-              </div>
-            ))}
-          </dl>
-        )
-      }
     </div>
   </div>
 
@@ -158,7 +150,7 @@ const hasStats = hero.stats && hero.stats.length > 0;
         class="select-none text-[9px] font-medium uppercase tracking-[0.28em] text-white/40"
         style="writing-mode: vertical-rl; text-orientation: mixed;"
       >
-        Follow Us
+        Síguenos
       </span>
       <span
         class="select-none text-[9px] font-medium uppercase tracking-[0.28em] text-white/25"

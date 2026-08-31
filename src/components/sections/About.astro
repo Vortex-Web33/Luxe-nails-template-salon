@@ -24,7 +24,7 @@ const { about } = CONTENT;
       {/* Título serif blanco grande */}
       <h2
         id="nosotros-title"
-        class="mt-5 font-serif text-[2.2rem] font-normal leading-[0.95] tracking-[0.02em] text-white sm:text-5xl lg:text-[3.2rem]"
+        class="mt-5 font-serif text-[2.2rem] font-semibold leading-[0.95] tracking-[0.02em] text-white sm:text-5xl lg:text-[3.2rem]"
       >
         {/* Permite que CONTENT.about.title venga como "BEAUTY. CARE. CONFIDENCE." — lo forzamos a líneas */}
         {
@@ -86,7 +86,7 @@ const { about } = CONTENT;
           <dl class="mt-10 grid grid-cols-3 gap-6 border-t border-white/10 pt-8">
             {about.stats.map((stat) => (
               <div>
-                <dd class="font-serif text-3xl font-light tracking-tight text-white">
+                <dd class="font-serif text-3xl font-semibold tracking-tight text-white">
                   {stat.value}
                 </dd>
                 <dt class="mt-1 text-[11px] font-medium uppercase tracking-[0.16em] text-white/45">

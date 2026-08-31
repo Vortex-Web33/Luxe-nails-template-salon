@@ -3,79 +3,168 @@ import { Icon } from 'astro-icon/components';
 import { SITE } from '@/config/site';
 
 const year = new Date().getFullYear();
-const hasNav = SITE.nav.length > 0;
-const hasSocial = SITE.social.length > 0;
 ---
 
-<footer class="border-t border-white/[0.06] bg-[#0a0a0a] py-12">
-  <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-8 px-4 sm:px-6 lg:flex-row lg:px-8">
-    <!-- Logo -->
-    <a href="#inicio" class="flex items-center gap-3" aria-label={`${SITE.name} — inicio`}>
-      <span class="flex size-8 items-center justify-center rounded-[9px] bg-gradient-to-br from-[#d48a8a] to-[#8d4f4f] shadow-[0_2px_12px_rgba(212,138,138,0.25)]">
-        <svg viewBox="0 0 24 24" class="size-[14px] text-white" fill="none" aria-hidden="true">
-          <path d="M12 4.5C12 4.5 8.2 8 8.2 11.1C8.2 11.1 9.7 13.2 12 14.3C14.3 13.2 15.8 11.1 15.8 11.1C15.8 8 12 4.5 12 4.5Z" fill="white" opacity="0.95"></path>
-          <path d="M7.6 8.2C6.4 9.6 6.5 12.3 8.8 13.8C9.9 12.9 10.8 11.4 10.8 11.4C9 10.2 7.6 8.2 7.6 8.2Z" fill="white" opacity="0.7"></path>
-          <path d="M16.4 8.2C16.4 8.2 15 10.2 13.2 11.4C13.2 11.4 14.1 12.9 15.2 13.8C17.5 12.3 17.6 9.6 16.4 8.2Z" fill="white" opacity="0.7"></path>
-        </svg>
-      </span>
-      <span class="font-serif text-[13px] font-bold tracking-[0.18em] text-white">{SITE.name}</span>
-    </a>
-
-    {
-      hasNav && (
-        <nav aria-label="Navegación de pie de página">
-          <ul class="flex flex-wrap items-center justify-center gap-x-7 gap-y-2">
-            {SITE.nav.map((item) => (
-              <li>
-                <a href={item.href} class="text-[11px] font-medium uppercase tracking-[0.16em] text-white/45 transition hover:text-white">
-                  {item.label.toUpperCase()}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      )
-    }
-
-    {
-      hasSocial ? (
-        <div class="flex items-center gap-3">
-          {SITE.social.map((social) => {
-            const name = social.name.toLowerCase();
-            const isInstagram = name.includes('instagram');
-            const isFacebook = name.includes('facebook');
-            return (
-              <a
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.name}
-                class="flex size-9 items-center justify-center rounded-full border border-white/10 text-white/50 transition hover:border-[#d48a8a]/40 hover:text-[#d48a8a] hover:bg-white/[0.03]"
-              >
-                {isInstagram ? (
-                  <Icon name="lucide:instagram" class="size-4" aria-hidden="true" />
-                ) : isFacebook ? (
-                  <Icon name="lucide:facebook" class="size-4" aria-hidden="true" />
-                ) : (
-                  <Icon name="lucide:heart" class="size-4" aria-hidden="true" />
-                )}
-              </a>
-            );
-          })}
+<footer class="border-t border-white/[0.06] bg-[#0a0a0a] pt-14 pb-10">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <!-- 4 columnas -->
+    <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+      <!-- Col A: Logo + tagline luxe + breve descripción -->
+      <div class="sm:col-span-2 lg:col-span-1">
+        <a href="#inicio" class="flex items-center gap-3" aria-label={`${SITE.name} — inicio`}>
+          <span class="flex size-8 items-center justify-center rounded-[9px] bg-gradient-to-br from-[#d48a8a] to-[#8d4f4f] shadow-[0_2px_12px_rgba(212,138,138,0.25)]">
+            <svg viewBox="0 0 24 24" class="size-[14px] text-white" fill="none" aria-hidden="true">
+              <path d="M12 4.5C12 4.5 8.2 8 8.2 11.1C8.2 11.1 9.7 13.2 12 14.3C14.3 13.2 15.8 11.1 15.8 11.1C15.8 8 12 4.5 12 4.5Z" fill="white" opacity="0.95"></path>
+              <path d="M7.6 8.2C6.4 9.6 6.5 12.3 8.8 13.8C9.9 12.9 10.8 11.4 10.8 11.4C9 10.2 7.6 8.2 7.6 8.2Z" fill="white" opacity="0.7"></path>
+              <path d="M16.4 8.2C16.4 8.2 15 10.2 13.2 11.4C13.2 11.4 14.1 12.9 15.2 13.8C17.5 12.3 17.6 9.6 16.4 8.2Z" fill="white" opacity="0.7"></path>
+            </svg>
+          </span>
+          <span class="font-serif text-[13px] font-bold tracking-[0.18em] text-white">{SITE.name}</span>
+        </a>
+        <p class="mt-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-300">{SITE.tagline}</p>
+        <p class="mt-4 max-w-xs text-sm leading-relaxed text-white/55">
+          Salón boutique en el corazón de Madrid. Manicura, gel y nail art con productos premium en un oasis de bienestar y elegancia.
+        </p>
+        <div class="mt-5 flex items-center gap-2 text-xs text-white/30">
+          <Icon name="lucide:map-pin" class="size-3.5 shrink-0 text-brand-300/60" aria-hidden="true" />
+          <span>{SITE.contact.address}</span>
         </div>
-      ) : (
-        <span class="text-xs tracking-wide text-white/25">Añade redes en SITE.social</span>
-      )
-    }
-  </div>
+      </div>
 
-  <div class="mx-auto mt-10 max-w-6xl px-4 sm:px-6 lg:px-8">
-    <div class="border-t border-white/[0.06] pt-8">
-      <p class="text-center text-xs tracking-wide text-white/30">
-        © {year} {SITE.legalName}. Todos los derechos reservados.
-      </p>
-      <p class="mt-2 text-center text-xs tracking-wide text-white/20">
-        Creado con <a href="https://astro.build" rel="noopener noreferrer" class="underline decoration-white/20 underline-offset-2 transition hover:text-white/40">Astro</a>, React y Tailwind CSS.
+      <!-- Col B: Secciones -->
+      <div>
+        <h3 class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white">
+          <Icon name="lucide:layers" class="size-3.5 text-brand-300" aria-hidden="true" />
+          Secciones
+        </h3>
+        <ul class="mt-5 space-y-3">
+          <li>
+            <a href="#inicio" class="text-sm text-white/60 transition hover:text-brand-300">Inicio</a>
+          </li>
+          <li>
+            <a href="#nosotros" class="text-sm text-white/60 transition hover:text-brand-300">Nosotros</a>
+          </li>
+          <li>
+            <a href="#servicios" class="text-sm text-white/60 transition hover:text-brand-300">Servicios</a>
+          </li>
+          <li>
+            <a href="#galeria" class="text-sm text-white/60 transition hover:text-brand-300">Galería</a>
+          </li>
+          <li>
+            <a href="#contacto" class="inline-flex items-center gap-1.5 text-sm font-medium text-brand-300 transition hover:text-white">
+              Reserva tu cita
+              <Icon name="lucide:calendar" class="size-3.5" aria-hidden="true" />
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col C: Legal -->
+      <div>
+        <h3 class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white">
+          <Icon name="lucide:shield" class="size-3.5 text-brand-300" aria-hidden="true" />
+          Legal
+        </h3>
+        <ul class="mt-5 space-y-3">
+          <li>
+            <a href="#" class="text-sm text-white/60 transition hover:text-brand-300">Términos de uso</a>
+          </li>
+          <li>
+            <a href="#" class="text-sm text-white/60 transition hover:text-brand-300">Política de privacidad</a>
+          </li>
+          <li>
+            <a href="#" class="text-sm text-white/60 transition hover:text-brand-300">Política de cookies</a>
+          </li>
+          <li>
+            <a href="#" class="text-sm text-white/60 transition hover:text-brand-300">Aviso legal</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col D: Redes + Contacto -->
+      <div>
+        <h3 class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white">
+          <Icon name="lucide:heart" class="size-3.5 text-brand-300" aria-hidden="true" />
+          Síguenos
+        </h3>
+        <div class="mt-5 flex items-center gap-3">
+          {
+            SITE.social.map((social) => {
+              const name = social.name.toLowerCase();
+              const isInstagram = name.includes('instagram');
+              const isFacebook = name.includes('facebook');
+              return (
+                <a
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.name}
+                  class="flex size-9 items-center justify-center rounded-full border border-white/10 text-white/50 transition hover:border-brand-300/40 hover:text-brand-300 hover:bg-white/[0.03]"
+                >
+                  {isInstagram ? (
+                    <Icon name="lucide:instagram" class="size-4" aria-hidden="true" />
+                  ) : isFacebook ? (
+                    <Icon name="lucide:facebook" class="size-4" aria-hidden="true" />
+                  ) : (
+                    <Icon name="lucide:heart" class="size-4" aria-hidden="true" />
+                  )}
+                </a>
+              );
+            })
+          }
+        </div>
+
+        <div class="mt-6 space-y-3 border-t border-white/[0.06] pt-6">
+          <a
+            href={`mailto:${SITE.contact.email}`}
+            class="flex items-center gap-2.5 text-sm text-white/60 transition hover:text-brand-300"
+          >
+            <span class="flex size-7 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/40">
+              <Icon name="lucide:mail" class="size-3.5" aria-hidden="true" />
+            </span>
+            <span class="break-all">{SITE.contact.email}</span>
+          </a>
+          <a
+            href={`tel:${SITE.contact.phone.replace(/\s/g, '')}`}
+            class="flex items-center gap-2.5 text-sm text-white/60 transition hover:text-brand-300"
+          >
+            <span class="flex size-7 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/40">
+              <Icon name="lucide:phone" class="size-3.5" aria-hidden="true" />
+            </span>
+            <span>{SITE.contact.phone}</span>
+          </a>
+          <div class="flex items-center gap-2.5 text-sm text-white/40">
+            <span class="flex size-7 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-white/30">
+              <Icon name="lucide:clock" class="size-3.5" aria-hidden="true" />
+            </span>
+            <span>{SITE.contact.hours}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Franja final -->
+    <div class="mt-12 border-t border-white/[0.06] pt-8">
+      <div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
+        <p class="text-center text-xs tracking-wide text-white/30 sm:text-left">
+          © {year} {SITE.legalName} — Todos los derechos reservados.
+        </p>
+        <p class="flex items-center gap-1.5 text-center text-xs tracking-wide text-white/30 sm:text-right">
+          <span>Diseñado por</span>
+          <a
+            href="https://vortexstudio.es"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group relative inline-flex cursor-pointer items-center font-semibold text-white/60 transition-all duration-300 hover:scale-105 hover:text-brand-300"
+          >
+            Vortex Studio
+            <span class="absolute bottom-0 left-0 h-px w-0 bg-brand-300 transition-all duration-300 group-hover:w-full" aria-hidden="true"></span>
+          </a>
+          <span class="text-white/30">✦</span>
+        </p>
+      </div>
+      <p class="mt-3 text-center text-[11px] tracking-wide text-white/20">
+        Hecho con elegancia en Madrid — <span class="text-white/30">Elegance at your fingertips</span>
       </p>
     </div>
   </div>

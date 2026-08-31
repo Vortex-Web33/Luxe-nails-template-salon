@@ -70,6 +70,7 @@ export default defineConfig({
         lucide: [
           'diamond',
           'shield-check',
+          'shield',
           'clock',
           'instagram',
           'facebook',
@@ -86,6 +87,9 @@ export default defineConfig({
           'sparkles',
           'heart',
           'gem',
+          'calendar',
+          'message-circle',
+          'layers',
         ],
       },
     }),

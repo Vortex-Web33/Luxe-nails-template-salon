@@ -1,6 +1,11 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { SITE } from '@/config/site';
+
+const bookingHref = 'https://cal.com/luxe-nail-studio';
+const waDigits = SITE.contact.phone.replace(/\s/g, '').replace('+', '');
+const waHref = `https://wa.me/${waDigits}?text=Hola%20Luxe%20Nail%20Studio%2C%20me%20gustar%C3%ADa%20reservar%20una%20cita%20%E2%9C%A8`;
+const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SITE.contact.address)}`;
 ---
 
 <section id="contacto" aria-labelledby="contacto-title" class="border-t border-black/[0.04] bg-[#fdf6f3] py-20 sm:py-28">
@@ -8,50 +13,154 @@ import { SITE } from '@/config/site';
     <div class="max-w-2xl">
       <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#d48a8a]">Contacto</p>
       <h2 id="contacto-title" class="mt-3 font-serif text-3xl font-bold tracking-tight text-[#3d2222] sm:text-4xl">
-        Hablemos de tu proyecto
+        Reserva tu cita
       </h2>
       <p class="mt-4 text-lg leading-relaxed text-[#8d4f4f]/70">
-        Escríbenos y te respondemos en menos de 24 horas laborables, con una propuesta inicial sin compromiso.
+        Elige cómo prefieres reservar — agenda online en 30 segundos o escríbenos por WhatsApp. Te respondemos al instante en horario de apertura.
       </p>
     </div>
 
-    <div class="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-      <div class="group rounded-2xl border border-black/[0.06] bg-white p-7 shadow-[0_8px_30px_rgba(61,34,34,0.04)] transition hover:shadow-[0_12px_40px_rgba(61,34,34,0.08)]">
-        <div class="mb-4 flex size-9 items-center justify-center rounded-full bg-[#fdf6f3] border border-black/[0.04] text-[#d48a8a]">
-          <Icon name="lucide:mail" class="size-4" aria-hidden="true" />
+    <div class="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch">
+      <!-- Columna IZQ: CTA grande -->
+      <div
+        class="relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-black/[0.06] bg-white p-8 shadow-[0_8px_30px_rgba(61,34,34,0.06)] sm:p-9 lg:p-10"
+      >
+        <!-- Decoración sutil -->
+        <div class="pointer-events-none absolute -right-16 -top-16 size-48 rounded-full bg-[#fdf6f3] opacity-60 blur-2xl" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute -bottom-12 -left-12 size-40 rounded-full bg-brand-50 opacity-50 blur-2xl" aria-hidden="true"></div>
+
+        <div class="relative">
+          <span
+            class="inline-flex items-center gap-2 rounded-full border border-[#f0b4b2]/40 bg-[#fdf6f3] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#c27474]"
+          >
+            <span class="size-1.5 rounded-full bg-[#d48a8a] animate-pulse" aria-hidden="true"></span>
+            Reserva en 30 segundos
+          </span>
+
+          <h3 class="mt-5 font-serif text-2xl font-bold leading-tight tracking-tight text-[#3d2222] sm:text-[1.75rem]">
+            ¿Lista para tu momento Luxe?
+          </h3>
+          <p class="mt-3 max-w-md text-sm leading-relaxed text-[#8d4f4f]/70 sm:text-[15px]">
+            Elige tu servicio, fecha y profesional. Confirmación instantánea y recordatorio automático. Sin llamadas, sin esperas.
+          </p>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <a
+              href={bookingHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group inline-flex items-center justify-center gap-2.5 rounded-full bg-[#d48a8a] px-7 py-3.5 text-[12px] font-bold uppercase tracking-[0.14em] text-white shadow-[0_8px_24px_rgba(212,138,138,0.32)] transition-all hover:-translate-y-px hover:bg-[#c27474] hover:shadow-[0_12px_32px_rgba(212,138,138,0.4)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300"
+            >
+              <Icon name="lucide:calendar" class="size-4" aria-hidden="true" />
+              <span>Reservar cita</span>
+              <Icon name="lucide:arrow-right" class="size-3.5 opacity-80 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+            </a>
+
+            <a
+              href={waHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2.5 rounded-full border border-black/[0.08] bg-white px-7 py-3.5 text-[12px] font-bold uppercase tracking-[0.14em] text-[#3d2222] shadow-sm transition hover:border-[#d48a8a]/30 hover:bg-[#fdf6f3] hover:text-[#8d4f4f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-200"
+            >
+              <Icon name="lucide:message-circle" class="size-4 text-[#25D366]" aria-hidden="true" />
+              <span>Escríbenos por WhatsApp</span>
+            </a>
+          </div>
         </div>
-        <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#3d2222]">Email</p>
-        <a href={`mailto:${SITE.contact.email}`} class="mt-2 block break-all text-sm font-medium text-[#c27474] transition group-hover:text-[#8d4f4f]">
-          {SITE.contact.email}
-        </a>
+
+        <div class="relative mt-8 flex items-center gap-2 border-t border-black/[0.04] pt-6 text-xs leading-relaxed text-[#8d4f4f]/60">
+          <span class="flex size-6 shrink-0 items-center justify-center rounded-full bg-[#fdf6f3] border border-black/[0.04] text-[#d48a8a]">
+            <Icon name="lucide:clock" class="size-3.5" aria-hidden="true" />
+          </span>
+          <span>Respuesta media por WhatsApp: <strong class="font-semibold text-[#8d4f4f]">&lt; 5 minutos</strong> en horario de apertura.</span>
+        </div>
       </div>
 
-      <div class="group rounded-2xl border border-black/[0.06] bg-white p-7 shadow-[0_8px_30px_rgba(61,34,34,0.04)] transition hover:shadow-[0_12px_40px_rgba(61,34,34,0.08)]">
-        <div class="mb-4 flex size-9 items-center justify-center rounded-full bg-[#fdf6f3] border border-black/[0.04] text-[#d48a8a]">
-          <Icon name="lucide:phone" class="size-4" aria-hidden="true" />
-        </div>
-        <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#3d2222]">Teléfono</p>
-        <a href={`tel:${SITE.contact.phone.replace(/\s/g, '')}`} class="mt-2 block text-sm font-medium text-[#c27474] transition group-hover:text-[#8d4f4f]">
-          {SITE.contact.phone}
-        </a>
-      </div>
+      <!-- Columna DER: 2 cards apiladas -->
+      <div class="flex flex-col gap-6">
+        <!-- Card Horario -->
+        <div
+          class="rounded-2xl border border-black/[0.06] bg-white p-7 shadow-[0_8px_30px_rgba(61,34,34,0.04)] transition hover:shadow-[0_12px_40px_rgba(61,34,34,0.08)]"
+        >
+          <div class="flex items-center gap-3">
+            <span class="flex size-9 items-center justify-center rounded-full bg-[#fdf6f3] border border-black/[0.04] text-[#d48a8a]">
+              <Icon name="lucide:clock" class="size-4" aria-hidden="true" />
+            </span>
+            <h3 class="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#3d2222]">Horario</h3>
+          </div>
 
-      <div class="group rounded-2xl border border-black/[0.06] bg-white p-7 shadow-[0_8px_30px_rgba(61,34,34,0.04)] transition hover:shadow-[0_12px_40px_rgba(61,34,34,0.08)]">
-        <div class="mb-4 flex size-9 items-center justify-center rounded-full bg-[#fdf6f3] border border-black/[0.04] text-[#d48a8a]">
-          <Icon name="lucide:map-pin" class="size-4" aria-hidden="true" />
-        </div>
-        <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#3d2222]">Dirección</p>
-        <address class="mt-2 text-sm not-italic leading-relaxed text-[#744141]/80">
-          {SITE.contact.address}
-        </address>
-      </div>
+          <ul class="mt-5 space-y-2.5 text-sm">
+            <li class="flex items-center justify-between gap-4">
+              <span class="text-[#744141]/70">Lunes – Viernes</span>
+              <span class="font-semibold tracking-wide text-[#3d2222]">10:00 – 20:00</span>
+            </li>
+            <li class="flex items-center justify-between gap-4">
+              <span class="text-[#744141]/70">Sábado</span>
+              <span class="font-semibold tracking-wide text-[#3d2222]">10:00 – 20:00</span>
+            </li>
+            <li class="flex items-center justify-between gap-4">
+              <span class="text-[#744141]/70">Domingo</span>
+              <span class="rounded-full bg-[#fdf6f3] px-2.5 py-1 text-xs font-semibold tracking-wide text-[#d48a8a]">Cerrado</span>
+            </li>
+          </ul>
 
-      <div class="group rounded-2xl border border-black/[0.06] bg-white p-7 shadow-[0_8px_30px_rgba(61,34,34,0.04)] transition hover:shadow-[0_12px_40px_rgba(61,34,34,0.08)]">
-        <div class="mb-4 flex size-9 items-center justify-center rounded-full bg-[#fdf6f3] border border-black/[0.04] text-[#d48a8a]">
-          <Icon name="lucide:clock" class="size-4" aria-hidden="true" />
+          <div class="mt-5 flex items-center gap-2 border-t border-black/[0.04] pt-4 text-xs leading-relaxed text-[#8d4f4f]/60">
+            <Icon name="lucide:clock" class="size-3.5 shrink-0 text-[#d48a8a]" aria-hidden="true" />
+            <span>Última cita una hora antes del cierre. Festivos consultar.</span>
+          </div>
         </div>
-        <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#3d2222]">Horario</p>
-        <p class="mt-2 text-sm leading-relaxed text-[#744141]/80">{SITE.contact.hours}</p>
+
+        <!-- Card Ubicación -->
+        <div
+          class="rounded-2xl border border-black/[0.06] bg-white p-7 shadow-[0_8px_30px_rgba(61,34,34,0.04)] transition hover:shadow-[0_12px_40px_rgba(61,34,34,0.08)]"
+        >
+          <div class="flex items-center gap-3">
+            <span class="flex size-9 items-center justify-center rounded-full bg-[#fdf6f3] border border-black/[0.04] text-[#d48a8a]">
+              <Icon name="lucide:map-pin" class="size-4" aria-hidden="true" />
+            </span>
+            <h3 class="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#3d2222]">Ubicación</h3>
+          </div>
+
+          <address class="mt-4 text-sm not-italic leading-relaxed text-[#744141]/80">
+            {SITE.contact.address}
+          </address>
+
+          <a
+            href={mapsHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-[#c27474] underline-offset-4 transition hover:text-[#8d4f4f] hover:underline"
+          >
+            <span>Ver en Google Maps</span>
+            <Icon name="lucide:arrow-right" class="size-3.5" aria-hidden="true" />
+          </a>
+
+          <!-- Mapa placeholder luxe -->
+          <div
+            class="relative mt-5 overflow-hidden rounded-xl border border-black/[0.06] bg-[#fdf6f3]"
+          >
+            <div class="aspect-[16/9] w-full bg-gradient-to-br from-[#fdf6f3] via-[#fce7e6] to-[#f8d0ce] sm:aspect-[1.9/1]"></div>
+            <!-- Pin decorativo -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
+              <span class="flex size-10 items-center justify-center rounded-full bg-white shadow-[0_4px_16px_rgba(61,34,34,0.12)] border border-black/[0.04] text-[#d48a8a]">
+                <Icon name="lucide:map-pin" class="size-5" aria-hidden="true" />
+              </span>
+              <p class="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#3d2222]">Calle Serrano 42</p>
+              <p class="text-xs text-[#8d4f4f]/60">28001 Madrid — Barrio de Salamanca</p>
+              <a
+                href={mapsHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-3 inline-flex items-center gap-1 rounded-full bg-[#0a0a0a] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-white transition hover:bg-[#3d2222]"
+              >
+                Cómo llegar
+                <Icon name="lucide:arrow-right" class="size-3" aria-hidden="true" />
+              </a>
+            </div>
+            <!-- grid pattern overlay -->
+            <div class="pointer-events-none absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, #3d2222 1px, transparent 1px); background-size: 16px 16px;"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
