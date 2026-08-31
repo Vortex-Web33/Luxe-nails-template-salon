@@ -1,0 +1,56 @@
+---
+import { SITE } from '@/config/site';
+
+interface Props {
+  title?: string | undefined;
+  description?: string | undefined;
+  /** Ruta canónica (por defecto la URL actual). */
+  canonical?: string | undefined;
+  /** Ruta de la imagen social (OG/Twitter). */
+  image?: string | undefined;
+  type?: string | undefined;
+  noindex?: boolean | undefined;
+  /** Objetos JSON-LD (Schema.org) a inyectar como datos estructurados. */
+  jsonLd?: Record<string, unknown>[] | undefined;
+}
+
+const { title, description, canonical, image, type = 'website', noindex = false, jsonLd = [] } =
+  Astro.props;
+
+const resolvedTitle = title ?? `${SITE.name} — ${SITE.tagline}`;
+const resolvedDescription = description ?? SITE.description;
+const resolvedCanonical = canonical ?? new URL(Astro.url.pathname, Astro.site).toString();
+const resolvedImage = new URL(image ?? SITE.ogImage, SITE.url).toString();
+const robots = noindex
+  ? 'noindex, nofollow'
+  : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+---
+
+<title>{resolvedTitle}</title>
+<meta name="description" content={resolvedDescription} />
+<meta name="robots" content={robots} />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+
+<link rel="canonical" href={resolvedCanonical} />
+
+<!-- Open Graph -->
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:title" content={resolvedTitle} />
+<meta property="og:description" content={resolvedDescription} />
+<meta property="og:url" content={resolvedCanonical} />
+<meta property="og:image" content={resolvedImage} />
+<meta property="og:locale" content={SITE.localeRegion} />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content={SITE.twitterHandle} />
+<meta name="twitter:title" content={resolvedTitle} />
+<meta name="twitter:description" content={resolvedDescription} />
+<meta name="twitter:image" content={resolvedImage} />
+
+{
+  jsonLd.map((data) => (
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(data)} />
+  ))
+}

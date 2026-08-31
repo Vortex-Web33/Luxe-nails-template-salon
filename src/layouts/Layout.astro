@@ -1,0 +1,50 @@
+---
+import { Font } from 'astro:assets';
+import '@/styles/global.css';
+import Seo from '@/components/seo/Seo.astro';
+import { SITE } from '@/config/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  image?: string;
+  type?: string;
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown>[];
+}
+
+const { title, description, canonical, image, type, noindex, jsonLd } = Astro.props;
+---
+
+<!doctype html>
+<html lang={SITE.locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content={SITE.themeColor} />
+
+    <Font cssVariable="--font-inter" preload />
+
+    <Seo
+      title={title}
+      description={description}
+      canonical={canonical}
+      image={image}
+      type={type}
+      noindex={noindex}
+      jsonLd={jsonLd}
+    />
+  </head>
+  <body class="bg-white font-sans text-slate-900 antialiased">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white"
+    >
+      Saltar al contenido principal
+    </a>
+    <slot />
+  </body>
+</html>
