@@ -1,0 +1,123 @@
+---
+import { CONTENT } from '@/config/site';
+
+const { about } = CONTENT;
+---
+
+<section
+  id="nosotros"
+  aria-labelledby="nosotros-title"
+  class="overflow-hidden bg-black"
+>
+  <div class="mx-auto grid max-w-[1400px] grid-cols-1 lg:grid-cols-2">
+    {/* ── Columna izquierda: contenido negro ── */}
+    <div
+      class="flex flex-col justify-center bg-black px-6 py-16 sm:px-10 lg:px-16 xl:px-20 lg:py-20"
+    >
+      {/* Eyebrow rosa dusty */}
+      <p
+        class="text-xs font-semibold uppercase tracking-[0.22em] text-brand-300"
+      >
+        {about.eyebrow}
+      </p>
+
+      {/* Título serif blanco grande */}
+      <h2
+        id="nosotros-title"
+        class="mt-5 font-serif text-[2.2rem] font-normal leading-[0.95] tracking-[0.02em] text-white sm:text-5xl lg:text-[3.2rem]"
+      >
+        {/* Permite que CONTENT.about.title venga como "BEAUTY. CARE. CONFIDENCE." — lo forzamos a líneas */}
+        {
+          about.title.includes('.') ? (
+            <span class="block">
+              {about.title.split('.').filter(Boolean).map((part) => (
+                <>
+                  <span class="block">{part.trim()}.</span>
+                </>
+              ))}
+            </span>
+          ) : (
+            about.title
+          )
+        }
+      </h2>
+
+      {/* Párrafos */}
+      <div class="mt-6 space-y-4">
+        {
+          about.paragraphs.map((paragraph) => (
+            <p class="max-w-xl text-[15px] leading-7 text-white/70">
+              {paragraph}
+            </p>
+          ))
+        }
+      </div>
+
+      {/* Firma script */}
+      <p
+        class="mt-8 font-serif text-2xl italic tracking-wide text-brand-200"
+        style="font-family: 'Great Vibes', 'Cormorant Garamond', Georgia, serif;"
+      >
+        Treat Yourself <span class="not-italic text-brand-300">♡</span>
+      </p>
+
+      {/* Highlights — bullets minimalistas luxe */}
+      {
+        about.highlights.length > 0 && (
+          <ul class="mt-10 space-y-3 border-t border-white/10 pt-8">
+            {about.highlights.map((highlight) => (
+              <li class="flex items-start gap-3">
+                <span
+                  class="mt-[7px] size-1.5 shrink-0 rounded-full bg-brand-300"
+                  aria-hidden="true"
+                />
+                <span class="text-sm leading-relaxed text-white/75">
+                  {highlight}
+                </span>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+
+      {/* Stats — estilo luxe oscuro */}
+      {
+        about.stats.length > 0 && (
+          <dl class="mt-10 grid grid-cols-3 gap-6 border-t border-white/10 pt-8">
+            {about.stats.map((stat) => (
+              <div>
+                <dd class="font-serif text-3xl font-light tracking-tight text-white">
+                  {stat.value}
+                </dd>
+                <dt class="mt-1 text-[11px] font-medium uppercase tracking-[0.16em] text-white/45">
+                  {stat.label}
+                </dt>
+              </div>
+            ))}
+          </dl>
+        )
+      }
+    </div>
+
+    {/* ── Columna derecha: imagen salón rosa ── */}
+    <div class="relative min-h-[420px] overflow-hidden bg-[#1a1a1a] lg:min-h-[640px]">
+      <img
+        src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?q=80&w=1200&auto=format&fit=crop"
+        alt="Interior elegante del salón Luxe Nail Studio"
+        class="absolute inset-0 h-full w-full object-cover"
+        loading="lazy"
+        decoding="async"
+      />
+      {/* Overlay sutil para integrar con el negro */}
+      <div
+        class="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent lg:from-black/10"
+        aria-hidden="true"
+      />
+      {/* Degradado inferior en móvil para suavizar corte */}
+      <div
+        class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/40 to-transparent lg:hidden"
+        aria-hidden="true"
+      />
+    </div>
+  </div>
+</section>
