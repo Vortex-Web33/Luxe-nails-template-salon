@@ -1,0 +1,80 @@
+---
+import { CONTENT } from '@/config/site';
+
+const { cta } = CONTENT;
+---
+
+<section
+  aria-labelledby="cta-title"
+  class="overflow-hidden bg-[#0a0a0a]"
+>
+  <div class="mx-auto grid max-w-[1400px] grid-cols-1 lg:grid-cols-[1.1fr_0.9fr]">
+    {/* Columna texto */}
+    <div
+      class="flex flex-col justify-center px-6 py-14 sm:px-10 sm:py-16 lg:px-16 xl:px-20 lg:py-20"
+    >
+      <p
+        class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-300"
+      >
+        Ready to glow?
+      </p>
+
+      <h2
+        id="cta-title"
+        class="mt-4 max-w-xl font-serif text-3xl font-normal uppercase leading-[0.95] tracking-[0.04em] text-white sm:text-4xl lg:text-[2.7rem]"
+      >
+        {/* CONTENT.cta.title puede venir en una o dos líneas; lo mostramos tal cual con tratamiento luxe */}
+        <span class="block text-white">BOOK YOUR</span>
+        <span class="block text-white">APPOINTMENT</span>
+        <span class="block text-brand-200">TODAY</span>
+        {/* Texto real para SEO y fallback si el contenido difiere del spec visual */}
+        <span class="sr-only">{cta.title}</span>
+      </h2>
+
+      <p
+        class="mt-5 max-w-md text-sm leading-relaxed text-white/60 sm:text-[15px]"
+      >
+        {cta.subtitle}
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <a
+          href={cta.action.href}
+          class="inline-flex items-center justify-center rounded-full bg-brand-500 px-8 py-3.5 text-sm font-bold uppercase tracking-[0.12em] text-white shadow-[0_8px_30px_rgba(212,138,138,0.35)] transition hover:bg-brand-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
+        >
+          {cta.action.label}
+        </a>
+        <span class="text-xs tracking-widest text-white/30">
+          Respuesta en &lt; 2 h
+        </span>
+      </div>
+    </div>
+
+    {/* Columna imagen — frasco esmalte rosa */}
+    <div
+      class="relative min-h-[360px] overflow-hidden bg-[#141414] lg:min-h-[520px]"
+    >
+      <img
+        src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=800&auto=format&fit=crop"
+        alt="Frasco de esmalte rosa — Luxe Nail Studio"
+        class="absolute inset-0 h-full w-full object-cover object-center"
+        loading="lazy"
+        decoding="async"
+      />
+      {/* Overlay para fusión con el fondo negro y asegurar contraste en móvil */}
+      <div
+        class="pointer-events-none absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#0a0a0a]/60 lg:to-[#0a0a0a]/10"
+        aria-hidden="true"
+      />
+      <div
+        class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/30 via-transparent to-transparent lg:hidden"
+        aria-hidden="true"
+      />
+      {/* Viñeta sutil interior */}
+      <div
+        class="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/5"
+        aria-hidden="true"
+      />
+    </div>
+  </div>
+</section>

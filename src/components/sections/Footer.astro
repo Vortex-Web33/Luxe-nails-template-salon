@@ -1,0 +1,82 @@
+---
+import { Icon } from 'astro-icon/components';
+import { SITE } from '@/config/site';
+
+const year = new Date().getFullYear();
+const hasNav = SITE.nav.length > 0;
+const hasSocial = SITE.social.length > 0;
+---
+
+<footer class="border-t border-white/[0.06] bg-[#0a0a0a] py-12">
+  <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-8 px-4 sm:px-6 lg:flex-row lg:px-8">
+    <!-- Logo -->
+    <a href="#inicio" class="flex items-center gap-3" aria-label={`${SITE.name} — inicio`}>
+      <span class="flex size-8 items-center justify-center rounded-[9px] bg-gradient-to-br from-[#d48a8a] to-[#8d4f4f] shadow-[0_2px_12px_rgba(212,138,138,0.25)]">
+        <svg viewBox="0 0 24 24" class="size-[14px] text-white" fill="none" aria-hidden="true">
+          <path d="M12 4.5C12 4.5 8.2 8 8.2 11.1C8.2 11.1 9.7 13.2 12 14.3C14.3 13.2 15.8 11.1 15.8 11.1C15.8 8 12 4.5 12 4.5Z" fill="white" opacity="0.95"></path>
+          <path d="M7.6 8.2C6.4 9.6 6.5 12.3 8.8 13.8C9.9 12.9 10.8 11.4 10.8 11.4C9 10.2 7.6 8.2 7.6 8.2Z" fill="white" opacity="0.7"></path>
+          <path d="M16.4 8.2C16.4 8.2 15 10.2 13.2 11.4C13.2 11.4 14.1 12.9 15.2 13.8C17.5 12.3 17.6 9.6 16.4 8.2Z" fill="white" opacity="0.7"></path>
+        </svg>
+      </span>
+      <span class="font-serif text-[13px] font-bold tracking-[0.18em] text-white">{SITE.name}</span>
+    </a>
+
+    {
+      hasNav && (
+        <nav aria-label="Navegación de pie de página">
+          <ul class="flex flex-wrap items-center justify-center gap-x-7 gap-y-2">
+            {SITE.nav.map((item) => (
+              <li>
+                <a href={item.href} class="text-[11px] font-medium uppercase tracking-[0.16em] text-white/45 transition hover:text-white">
+                  {item.label.toUpperCase()}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+
+    {
+      hasSocial ? (
+        <div class="flex items-center gap-3">
+          {SITE.social.map((social) => {
+            const name = social.name.toLowerCase();
+            const isInstagram = name.includes('instagram');
+            const isFacebook = name.includes('facebook');
+            return (
+              <a
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.name}
+                class="flex size-9 items-center justify-center rounded-full border border-white/10 text-white/50 transition hover:border-[#d48a8a]/40 hover:text-[#d48a8a] hover:bg-white/[0.03]"
+              >
+                {isInstagram ? (
+                  <Icon name="lucide:instagram" class="size-4" aria-hidden="true" />
+                ) : isFacebook ? (
+                  <Icon name="lucide:facebook" class="size-4" aria-hidden="true" />
+                ) : (
+                  <Icon name="lucide:heart" class="size-4" aria-hidden="true" />
+                )}
+              </a>
+            );
+          })}
+        </div>
+      ) : (
+        <span class="text-xs tracking-wide text-white/25">Añade redes en SITE.social</span>
+      )
+    }
+  </div>
+
+  <div class="mx-auto mt-10 max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="border-t border-white/[0.06] pt-8">
+      <p class="text-center text-xs tracking-wide text-white/30">
+        © {year} {SITE.legalName}. Todos los derechos reservados.
+      </p>
+      <p class="mt-2 text-center text-xs tracking-wide text-white/20">
+        Creado con <a href="https://astro.build" rel="noopener noreferrer" class="underline decoration-white/20 underline-offset-2 transition hover:text-white/40">Astro</a>, React y Tailwind CSS.
+      </p>
+    </div>
+  </div>
+</footer>

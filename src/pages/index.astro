@@ -1,0 +1,45 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/sections/Header.astro';
+import Hero from '@/components/sections/Hero.astro';
+import About from '@/components/sections/About.astro';
+import Features from '@/components/sections/Features.astro';
+import Gallery from '@/components/sections/Gallery.astro';
+import Testimonials from '@/components/sections/Testimonials.astro';
+import Faq from '@/components/sections/Faq.astro';
+import Cta from '@/components/sections/Cta.astro';
+import Contact from '@/components/sections/Contact.astro';
+import Footer from '@/components/sections/Footer.astro';
+
+import { SITE, CONTENT } from '@/config/site';
+import {
+  websiteJsonLd,
+  organizationJsonLd,
+  servicesJsonLd,
+  faqJsonLd,
+} from '@/utils/seo';
+
+// JSON-LD condicional: solo incluimos servicios/FAQ si hay datos.
+// Evita emitir ItemList o FAQPage vacíos (penalizan en Rich Results).
+const jsonLd = [
+  websiteJsonLd(SITE),
+  organizationJsonLd(SITE),
+  ...(CONTENT.services.length > 0 ? [servicesJsonLd(SITE, CONTENT.services)] : []),
+  ...(CONTENT.faq.items.length > 0 ? [faqJsonLd(CONTENT.faq.items)] : []),
+];
+---
+
+<Layout title={`${SITE.name} — ${SITE.tagline}`} description={SITE.description} jsonLd={jsonLd}>
+  <Header />
+  <main id="main">
+    <Hero />
+    <About />
+    <Features />
+    <Gallery />
+    <Testimonials />
+    <Faq />
+    <Cta />
+    <Contact />
+  </main>
+  <Footer />
+</Layout>
