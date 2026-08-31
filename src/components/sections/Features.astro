@@ -54,30 +54,30 @@ const subtitle = features.subtitle;
 <section
   id="servicios"
   aria-labelledby="servicios-title"
-  class="bg-[#fdf6f3] py-16 sm:py-20"
+  class="bg-[#fdf6f3] py-20 sm:py-28 lg:py-32"
 >
-  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     {/* Encabezado — fiel a referencia: left on desktop, center on mobile */}
     <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
       <div class="max-w-xl">
         <p
-          class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-500"
+          class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-500 sm:text-sm"
         >
           NUESTROS
         </p>
         <h2
           id="servicios-title"
-          class="mt-1 font-serif text-3xl font-semibold leading-none tracking-[0.04em] text-[#1a1a1a] sm:text-4xl lg:text-[2.6rem]"
+          class="mt-2 font-serif text-4xl font-semibold leading-none tracking-[0.04em] text-[#1a1a1a] sm:text-5xl lg:text-[3.4rem]"
         >
           <span class="block text-brand-500">SERVICIOS</span>
           <span class="block">EXCLUSIVOS</span>
         </h2>
-        <p class="mt-4 max-w-xl text-sm leading-relaxed text-zinc-500 sm:text-[15px]">
+        <p class="mt-5 max-w-xl text-base leading-relaxed text-zinc-500 sm:text-[17px]">
           {subtitle}
         </p>
       </div>
       <div class="hidden items-center gap-3 lg:flex">
-        <span class="text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-900">Explorar servicios</span>
+        <span class="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-900">Explorar servicios</span>
         <span class="h-px w-12 bg-zinc-900" aria-hidden="true"></span>
       </div>
       {/* mobile divider */}
@@ -88,9 +88,9 @@ const subtitle = features.subtitle;
 
     {
       cards.length > 0 ? (
-        <div class="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {cards.map((card) => (
-            <article class="group relative flex min-h-[380px] flex-col overflow-hidden rounded-[18px] bg-[#111] sm:min-h-[420px]">
+            <article class="group relative flex min-h-[460px] flex-col overflow-hidden rounded-[22px] bg-[#111] sm:min-h-[500px] lg:min-h-[560px]">
               {/* Imagen */}
               <div class="absolute inset-0 overflow-hidden">
                 <img
@@ -119,16 +119,16 @@ const subtitle = features.subtitle;
               />
 
               {/* Contenido abajo */}
-              <div class="relative mt-auto p-6">
-                <h3 class="font-serif text-[13px] font-semibold uppercase tracking-[0.16em] text-white">
+              <div class="relative mt-auto p-7 lg:p-8">
+                <h3 class="font-serif text-sm font-semibold uppercase tracking-[0.16em] text-white sm:text-[15px]">
                   {card.title}
                 </h3>
-                <p class="mt-2 line-clamp-3 text-sm leading-relaxed text-white/70">
+                <p class="mt-2.5 line-clamp-3 text-[15px] leading-relaxed text-white/75">
                   {card.description}
                 </p>
-                <span class="mt-4 inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-200 opacity-0 transition duration-300 group-hover:opacity-100">
+                <span class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-200 opacity-0 transition duration-300 group-hover:opacity-100">
                   Descubrir
-                  <Icon name="lucide:arrow-right" class="size-3" aria-hidden="true" />
+                  <Icon name="lucide:arrow-right" class="size-3.5" aria-hidden="true" />
                 </span>
               </div>
             </article>

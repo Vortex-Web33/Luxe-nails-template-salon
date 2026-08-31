@@ -12,7 +12,7 @@ export default function FaqAccordion({ items }: Props) {
   if (items.length === 0) return null;
 
   return (
-    <div className="mx-auto max-w-3xl divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white shadow-sm">
+    <div className="mx-auto max-w-4xl divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white shadow-sm">
       {items.map((item, index) => {
         const isOpen = openIndex === index;
         return (
@@ -24,12 +24,12 @@ export default function FaqAccordion({ items }: Props) {
                 aria-expanded={isOpen}
                 aria-controls={`faq-panel-${index}`}
                 onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-base font-semibold text-slate-900 transition hover:text-brand-600"
+                className="flex w-full items-center justify-between gap-5 px-7 py-6 text-left text-lg font-bold leading-snug tracking-tight text-slate-900 transition hover:text-brand-600 sm:text-[1.15rem]"
               >
-                {item.question}
+                <span className="pr-2">{item.question}</span>
                 <ChevronDown
                   aria-hidden="true"
-                  className={`size-5 shrink-0 text-brand-500 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                  className={`size-6 shrink-0 text-brand-500 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
                 />
               </button>
             </h3>
@@ -37,9 +37,9 @@ export default function FaqAccordion({ items }: Props) {
               id={`faq-panel-${index}`}
               role="region"
               aria-labelledby={`faq-trigger-${index}`}
-              className={isOpen ? 'px-6 pb-5' : 'hidden'}
+              className={isOpen ? 'px-7 pb-6' : 'hidden'}
             >
-              <p className="text-sm leading-relaxed text-slate-600">{item.answer}</p>
+              <p className="text-base leading-7 text-slate-600 sm:text-[1.05rem] sm:leading-8">{item.answer}</p>
             </div>
           </div>
         );

@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { Star } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { Testimonial } from '@/config/site';
 
 interface Props {
@@ -20,8 +20,11 @@ export default function TestimonialCarousel({ items }: Props) {
   }, [paused, items.length]);
 
   const goTo = useCallback((i: number) => {
-    setIndex(i % items.length);
+    setIndex(((i % items.length) + items.length) % items.length);
   }, [items.length]);
+
+  const next = useCallback(() => setIndex((prev) => (prev + 1) % items.length), [items.length]);
+  const prev = useCallback(() => setIndex((prev) => (prev - 1 + items.length) % items.length), [items.length]);
 
   if (items.length === 0) return null;
 
@@ -36,10 +39,27 @@ export default function TestimonialCarousel({ items }: Props) {
 
   return (
     <div
-      className="w-full"
+      className="relative w-full"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
+      {/* Flechas laterales */}
+      <button
+        type="button"
+        aria-label="Reseña anterior"
+        onClick={prev}
+        className="absolute left-0 top-1/2 z-10 hidden -translate-y-1/2 -translate-x-2 items-center justify-center rounded-full border border-white/10 bg-white/5 p-3 text-white/70 backdrop-blur transition hover:bg-white/10 hover:text-white md:flex lg:-translate-x-6"
+      >
+        <ChevronLeft className="size-5" aria-hidden="true" />
+      </button>
+      <button
+        type="button"
+        aria-label="Siguiente reseña"
+        onClick={next}
+        className="absolute right-0 top-1/2 z-10 hidden -translate-y-1/2 translate-x-2 items-center justify-center rounded-full border border-white/10 bg-white/5 p-3 text-white/70 backdrop-blur transition hover:bg-white/10 hover:text-white md:flex lg:translate-x-6"
+      >
+        <ChevronRight className="size-5" aria-hidden="true" />
+      </button>
       {/* Mobile: 1 card */}
       <div className="md:hidden">
         <figure
@@ -115,11 +135,6 @@ export default function TestimonialCarousel({ items }: Props) {
           );
         })}
       </div>
-
-      {/* Texto auxiliar accesible y visual sutil */}
-      <p className="mt-3 text-center text-xs tracking-widest text-white/30">
-        {index + 1} / {items.length} — desliza o pulsa los puntos para navegar
-      </p>
     </div>
   );
 }
