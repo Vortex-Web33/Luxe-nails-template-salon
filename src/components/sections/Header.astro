@@ -6,7 +6,10 @@ const lastNavItem = SITE.nav.at(-1);
 const hasNav = SITE.nav.length > 0;
 ---
 
-<header class="sticky top-0 z-50 border-b border-brand-500/10 bg-black/80 backdrop-blur-xl supports-[backdrop-filter]:bg-black/60">
+<header
+  id="site-header"
+  class="fixed inset-x-0 top-0 z-50 border-b border-transparent bg-transparent backdrop-blur-none transition-all duration-300 supports-[backdrop-filter]:bg-transparent"
+>
   <div class="mx-auto flex h-[68px] max-w-6xl items-center justify-between gap-6 px-4 sm:px-6 lg:gap-10 lg:px-8">
     <!-- Logo Luxe -->
     <a href="#inicio" class="flex shrink-0 items-center gap-3 mr-6 lg:mr-10 xl:mr-16 lg:ml-0" aria-label={`${SITE.name} — inicio`}>
@@ -56,4 +59,21 @@ const hasNav = SITE.nav.length > 0;
 
     {hasNav && <MobileMenu items={SITE.nav} client:load />}
   </div>
+
+  <script>
+    const header = document.getElementById('site-header');
+    if (header) {
+      const onScroll = () => {
+        if (window.scrollY > 10) {
+          header.classList.add('bg-black/80', 'backdrop-blur-xl', 'border-brand-500/10', 'supports-[backdrop-filter]:bg-black/60');
+          header.classList.remove('bg-transparent', 'border-transparent', 'backdrop-blur-none', 'supports-[backdrop-filter]:bg-transparent');
+        } else {
+          header.classList.remove('bg-black/80', 'backdrop-blur-xl', 'border-brand-500/10', 'supports-[backdrop-filter]:bg-black/60');
+          header.classList.add('bg-transparent', 'border-transparent', 'backdrop-blur-none', 'supports-[backdrop-filter]:bg-transparent');
+        }
+      };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+  </script>
 </header>
