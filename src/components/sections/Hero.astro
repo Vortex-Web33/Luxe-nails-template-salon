@@ -1,0 +1,211 @@
+---
+import { Icon } from 'astro-icon/components';
+import { CONTENT } from '@/config/site';
+
+const { hero } = CONTENT;
+
+// Split highlight "THAT Empower." -> THAT + Empower.
+const highlightRaw = hero.highlight?.trim() ?? '';
+const highlightParts = highlightRaw.split(/\s+/);
+const thatPart = highlightParts[0] ?? '';
+const empowerPart = highlightParts.slice(1).join(' ') || '';
+// eyebrow for the small tracking-widest line
+const eyebrowDisplay = (hero.eyebrow || '').toUpperCase();
+// subtitle is used as descriptive text (hidden on mobile to keep luxe minimal)
+const hasStats = hero.stats && hero.stats.length > 0;
+---
+
+<section
+  id="inicio"
+  aria-label="Presentación — Luxe Nail Studio"
+  class="relative overflow-hidden bg-black lg:bg-[#0a0a0a]"
+>
+  <!-- Background image (right 60%) + overlays -->
+  <div class="absolute inset-0" aria-hidden="true">
+    {/* image layer - 60% on desktop, full bleed on mobile */}
+    <div class="absolute inset-0 lg:left-[40%] lg:w-[60%]">
+      <img
+        src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1200&auto=format&fit=crop&crop=center"
+        alt="Manos con manicura cromada nude y anillos dorados sobre seda negra"
+        class="h-full w-full object-cover object-[center_30%] lg:object-center"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+      />
+    </div>
+    {/* main luxury fade: black left for legibility */}
+    <div class="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/30 lg:from-black lg:via-black/80 lg:via-[58%] lg:to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 lg:hidden"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/55"></div>
+    {/* subtle grain */}
+    <div class="absolute inset-0 opacity-[0.035] mix-blend-soft-light" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22 opacity=%220.4%22/></svg>')"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 mx-auto flex min-h-[86vh] min-h-[640px] max-w-[1320px] items-center px-4 sm:px-6 lg:px-8 lg:min-h-[92vh]">
+    <div class="w-full max-w-[640px] py-24 sm:py-28 lg:py-20">
+      <!-- Giant luxe typography -->
+      <h1 class="font-serif leading-[0.82] tracking-tighter">
+        <span class="block text-[3.25rem] font-bold tracking-[-0.05em] text-white sm:text-[4.75rem] lg:text-[5.75rem] xl:text-[6.75rem] xl:tracking-[-0.06em]">
+          {hero.title}
+        </span>
+        <span class="block text-[2rem] font-semibold tracking-[-0.03em] text-white sm:text-[2.75rem] lg:text-[3.35rem] -mt-1 sm:-mt-2">
+          {thatPart}
+        </span>
+        <span
+          class="block -mt-2 font-light italic tracking-wide text-brand-300 sm:-mt-3 lg:-mt-5"
+          style="font-family: var(--font-serif), Georgia, serif; color: #e8b4b8;"
+        >
+          <span class="text-[2.85rem] sm:text-[4rem] lg:text-[4.75rem] xl:text-[5.4rem] leading-none">
+            {empowerPart || highlightRaw.replace(thatPart, '').trim()}
+          </span>
+        </span>
+      </h1>
+
+      <!-- Smallcaps subtitle -->
+      <p class="mt-6 text-[10px] font-medium uppercase tracking-[0.32em] text-white/75 sm:mt-7 sm:text-[11px] sm:tracking-[0.38em] lg:text-xs">
+        {eyebrowDisplay || 'ELEGANCE AT YOUR FINGERTIPS'}
+      </p>
+
+      <!-- Optional descriptive subtitle (uses CONTENT.hero.subtitle) - visible on desktop only to keep hero clean on mobile -->
+      {
+        hero.subtitle && (
+          <p class="mt-4 hidden max-w-[480px] text-sm leading-relaxed text-white/55 lg:block lg:text-[14px] lg:leading-6">
+            {hero.subtitle}
+          </p>
+        )
+      }
+
+      <!-- CTA -->
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <a
+          href={hero.primaryCta.href}
+          class="group inline-flex items-center gap-3 rounded-lg bg-brand-500 bg-[#d48a8a] px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.14em] text-white shadow-[0_8px_24px_rgba(0,0,0,0.35)] transition-all hover:bg-[#c97e7e] hover:shadow-[0_12px_32px_rgba(0,0,0,0.45)] hover:-translate-y-px focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300"
+        >
+          <span>{hero.primaryCta.label}</span>
+          <Icon name="lucide:arrow-right" class="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+        </a>
+      </div>
+
+      <!-- Three iconitos -->
+      <div class="mt-10 flex flex-wrap gap-5 border-t border-white/10 pt-7 sm:gap-7 lg:mt-12">
+        <!-- Premium Products -->
+        <div class="flex items-center gap-2.5">
+          <span class="flex size-7 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/85 backdrop-blur-sm">
+            <Icon name="lucide:gem" class="size-3.5" aria-hidden="true" />
+          </span>
+          <span class="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/70 sm:text-[11px]">Premium Products</span>
+        </div>
+        <!-- Hygienic & Safe -->
+        <div class="flex items-center gap-2.5">
+          <span class="flex size-7 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/85 backdrop-blur-sm">
+            <Icon name="lucide:shield-check" class="size-3.5" aria-hidden="true" />
+          </span>
+          <span class="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/70 sm:text-[11px]">Hygienic &amp; Safe</span>
+        </div>
+        <!-- Expert Technicians -->
+        <div class="flex items-center gap-2.5">
+          <span class="flex size-7 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/85 backdrop-blur-sm">
+            <Icon name="lucide:clock" class="size-3.5" aria-hidden="true" />
+          </span>
+          <span class="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/70 sm:text-[11px]">Expert Technicians</span>
+        </div>
+      </div>
+
+      <!-- Stats from CONTENT.hero.stats (luxe minimal, below iconitos) -->
+      {
+        hasStats && (
+          <dl class="mt-8 hidden grid-cols-3 gap-6 border-t border-white/5 pt-6 sm:grid">
+            {hero.stats.map((stat) => (
+              <div>
+                <dd class="font-serif text-xl font-semibold tracking-tight text-white lg:text-2xl">{stat.value}</dd>
+                <dt class="mt-1 text-[10px] font-medium uppercase tracking-widest text-white/50">{stat.label}</dt>
+              </div>
+            ))}
+          </dl>
+        )
+      }
+    </div>
+  </div>
+
+  <!-- Right decorative column (desktop only) - vertical social + circular badge -->
+  <div
+    class="pointer-events-none absolute bottom-0 right-0 top-0 z-20 hidden w-[88px] flex-col items-center justify-between border-l border-white/[0.06] bg-black/10 py-8 backdrop-blur-[1px] lg:flex xl:w-[96px]"
+    aria-hidden="true"
+  >
+    <!-- Top: social -->
+    <div class="pointer-events-auto flex flex-col items-center gap-5">
+      <a
+        href="https://instagram.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+        class="flex size-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 transition hover:border-white/20 hover:bg-white/10 hover:text-white"
+      >
+        <Icon name="lucide:instagram" class="size-3.5" aria-hidden="true" />
+      </a>
+      <a
+        href="https://facebook.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Facebook"
+        class="flex size-8 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 transition hover:border-white/20 hover:bg-white/10 hover:text-white"
+      >
+        <Icon name="lucide:facebook" class="size-3.5" aria-hidden="true" />
+      </a>
+      <div class="h-14 w-px bg-gradient-to-b from-white/20 to-white/5"></div>
+      <span
+        class="select-none text-[9px] font-medium uppercase tracking-[0.28em] text-white/40"
+        style="writing-mode: vertical-rl; text-orientation: mixed;"
+      >
+        Follow Us
+      </span>
+      <span
+        class="select-none text-[9px] font-medium uppercase tracking-[0.28em] text-white/25"
+        style="writing-mode: vertical-rl; text-orientation: mixed;"
+      >
+        — Luxe Studio
+      </span>
+    </div>
+
+    <!-- Bottom: circular badge -->
+    <div class="pointer-events-auto relative flex size-[84px] items-center justify-center xl:size-[92px]">
+      {/* outer ring */}
+      <div class="absolute inset-0 rounded-full border border-white/12 bg-white/[0.04] backdrop-blur-sm"></div>
+      <div class="absolute inset-[6px] rounded-full border border-white/5"></div>
+      {/* curved text */}
+      <svg viewBox="0 0 100 100" class="absolute inset-0 h-full w-full p-1" aria-hidden="true">
+        <defs>
+          <path id="heroCirclePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"></path>
+        </defs>
+        <text fill="rgba(255,255,255,0.58)" font-size="6.8" letter-spacing="1.6" font-weight="500">
+          <textPath href="#heroCirclePath" startOffset="0%"> EXPERIENCE LUXURY • EXPERIENCE LUXURY • </textPath>
+        </text>
+      </svg>
+      {/* play button central */}
+      <button
+        type="button"
+        aria-label="Play showreel"
+        class="relative flex size-9 items-center justify-center rounded-full bg-white text-black shadow-[0_4px_20px_rgba(0,0,0,0.4)] transition hover:scale-105 hover:bg-white xl:size-10"
+      >
+        <Icon name="lucide:play" class="size-3.5 translate-x-px xl:size-4 fill-current" aria-hidden="true" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile circular badge (bottom-right floating) -->
+  <div class="absolute bottom-5 right-4 z-20 flex size-[76px] items-center justify-center sm:bottom-6 sm:right-6 lg:hidden" aria-hidden="true">
+    <div class="absolute inset-0 rounded-full border border-white/12 bg-black/25 backdrop-blur-md"></div>
+    <svg viewBox="0 0 100 100" class="absolute inset-0 h-full w-full p-1">
+      <defs>
+        <path id="heroCirclePathMobile" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"></path>
+      </defs>
+      <text fill="rgba(255,255,255,0.6)" font-size="6.8" letter-spacing="1.5" font-weight="500">
+        <textPath href="#heroCirclePathMobile" startOffset="0%"> EXPERIENCE LUXURY • EXPERIENCE LUXURY • </textPath>
+      </text>
+    </svg>
+    <span class="relative flex size-8 items-center justify-center rounded-full bg-white text-black shadow-lg">
+      <Icon name="lucide:play" class="size-3 translate-x-px fill-current" aria-hidden="true" />
+    </span>
+  </div>
+</section>
