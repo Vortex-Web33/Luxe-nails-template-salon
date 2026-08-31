@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="LUXE NAIL STUDIO — Open Graph">
+  <!-- Fondo negro luxe -->
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+  <!-- Detalle decorativo: círculo dusty rose muy sutil -->
+  <circle cx="1040" cy="110" r="260" fill="#d48a8a" opacity="0.06"/>
+  <circle cx="160" cy="560" r="320" fill="#d48a8a" opacity="0.04"/>
+  <!-- Línea superior decorativa -->
+  <rect x="585" y="72" width="30" height="2" rx="1" fill="#d48a8a" opacity="0.9"/>
+  <!-- Lotus mini icono centrado arriba -->
+  <g transform="translate(600 98)" opacity="0.95">
+    <path d="M0 -14 C0 -14 -8 -6 -8 2 C-8 2 -4 7 0 9 C4 7 8 2 8 2 C8 -6 0 -14 0 -14Z" fill="#d48a8a" opacity="0.95"/>
+    <path d="M-10 -7 C-12 -4 -11 2 -5 6 C-2 4 0 0 0 0 C-4 -3 -10 -7 -10 -7Z" fill="#d48a8a" opacity="0.65"/>
+    <path d="M10 -7 C10 -7 4 -3 0 0 C0 0 2 4 5 6 C11 2 12 -4 10 -7Z" fill="#d48a8a" opacity="0.65"/>
+  </g>
+
+  <!-- Eyebrow -->
+  <text x="600" y="162" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#d48a8a" letter-spacing="0.32em">ELEGANCE AT YOUR FINGERTIPS</text>
+
+  <!-- Title LUXE NAIL STUDIO -->
+  <text x="600" y="250" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="68" font-weight="700" fill="#ffffff" letter-spacing="0.14em">LUXE NAIL STUDIO</text>
+
+  <!-- Divider -->
+  <rect x="560" y="280" width="80" height="1" fill="white" opacity="0.18"/>
+  <rect x="592" y="278" width="16" height="5" rx="1" fill="#d48a8a" opacity="0.9"/>
+
+  <!-- Payoff NAILS THAT Empower. -->
+  <text x="600" y="350" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="400" letter-spacing="0.02em">
+    <tspan fill="#ffffff">NAILS </tspan><tspan fill="#ffffff" font-style="italic" font-weight="400">THAT </tspan><tspan fill="#d48a8a" font-style="italic" font-weight="400">Empower.</tspan>
+  </text>
+
+  <!-- Subtitle secondary -->
+  <text x="600" y="395" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="400" fill="white" opacity="0.55" letter-spacing="0.04em">Manicura · Gel Extensions · Nail Art · Premium Pedicure</text>
+
+  <!-- Footer URL bar -->
+  <g transform="translate(0 540)">
+    <line x1="80" y1="0" x2="1120" y2="0" stroke="white" stroke-opacity="0.08" stroke-width="1"/>
+    <text x="80" y="36" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="500" fill="white" opacity="0.35" letter-spacing="0.14em">LUXENAILSTUDIO.COM — CALLE SERRANO 42, MADRID</text>
+    <text x="1120" y="36" text-anchor="end" font-family="Georgia, serif" font-size="13" font-style="italic" fill="#d48a8a" opacity="0.9" letter-spacing="0.06em">Beauty. Care. Confidence.</text>
+  </g>
+</svg>

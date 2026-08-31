@@ -1,0 +1,45 @@
+{
+  "name": "luxe-nail-studio",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Luxe Nail Studio — Salón de uñas de lujo en Madrid. Elegance at your fingertips.",
+  "keywords": [
+    "manicura",
+    "nail art",
+    "gel",
+    "pedicura",
+    "luxe nail studio",
+    "astro"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "astro": "astro",
+    "setup": "node scripts/setup.mjs"
+  },
+  "dependencies": {
+    "@astrojs/react": "^6.0.4",
+    "@astrojs/sitemap": "^3.7.3",
+    "@iconify-json/lucide": "^1.2.127",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.5",
+    "astro": "^7.2.9",
+    "astro-icon": "^1.2.0",
+    "lucide-react": "^1.37.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "typescript": "^5.9.3"
+  }
+}

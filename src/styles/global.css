@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+/*
+ * ════════════════════════════════════════════════════════════
+ *  PALETA DEL TEMPLATE — TODO: PERSONALIZAR
+ * ════════════════════════════════════════════════════════════
+ *  1. Cambia los 10 valores --color-brand-* por tu paleta.
+ *     Herramienta: https://uicolors.app/create
+ *     Ejemplo: si tu color principal es #0ea5e9, genera la escala 50-950.
+ *  2. SITE.themeColor en src/config/site.ts debe coincidir con --color-brand-600.
+ *  3. Si solo quieres un gris neutro temporal, deja este bloque tal cual —
+ *     ya es una paleta gris/índigo desaturada y funcional.
+ * ════════════════════════════════════════════════════════════
+ */
+@theme inline {
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Paleta Luxe — dusty rose #d48a8a (uicolors.app) */
+  --color-brand-50: #fdf6f3;
+  --color-brand-100: #fce7e6;
+  --color-brand-200: #f8d0ce;
+  --color-brand-300: #f0b4b2;
+  --color-brand-400: #e8a09d;
+  --color-brand-500: #d48a8a;
+  --color-brand-600: #c27474;
+  --color-brand-700: #a85f5f;
+  --color-brand-800: #8d4f4f;
+  --color-brand-900: #744141;
+  --color-brand-950: #3d2222;
+
+  /* Luxe — dark / cream / gold */
+  --color-luxe-dark: #0f0f0f;
+  --color-luxe-dark-2: #1a1a1a;
+  --color-luxe-cream: #fdf6f3;
+  --color-luxe-gold: #c9a87c;
+}
+
+/* Variables luxe fuera de @theme para disponibilidad global incluso sin uso directo por Tailwind */
+:root {
+  --color-luxe-dark: #0f0f0f;
+  --color-luxe-dark-2: #1a1a1a;
+  --color-luxe-cream: #fdf6f3;
+  --color-luxe-gold: #c9a87c;
+}
+
+/* Clase utilitaria para títulos luxe serif — asegura que Astro detecte uso de --font-serif */
+.font-serif {
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Compensa el header fijo al navegar con anclas */
+    scroll-padding-top: 5rem;
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  ::selection {
+    background-color: var(--color-brand-200);
+    color: var(--color-brand-950);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+  }
+
+  body {
+    text-wrap: pretty;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+    text-wrap: balance;
+  }
+}
