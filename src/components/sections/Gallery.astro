@@ -1,0 +1,98 @@
+---
+/**
+ * Gallery.astro — Galería “Our Work” (opcional)
+ * Grid de 6 imágenes para complementar el diseño luxe.
+ * Id ancla: #galeria → coincide con SITE.nav
+ */
+const images = [
+  {
+    src: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=800&auto=format&fit=crop',
+    alt: 'Manicura clásica con esmalte nude elegante',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1519014816548-bf5fe059798b?q=80&w=800&auto=format&fit=crop',
+    alt: 'Detalle de uñas con acabado brillante',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=800&auto=format&fit=crop',
+    alt: 'Nail art minimalista en tonos rosa',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=800&auto=format&fit=crop',
+    alt: 'Uñas con gel extensions perfectamente esculpidas',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=800&auto=format&fit=crop',
+    alt: 'Frasco de esmalte rosa — colección Luxe',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1600948836101-f9ffda59d250?q=80&w=800&auto=format&fit=crop',
+    alt: 'Salón de manicura — ambiente boutique Luxe',
+  },
+];
+---
+
+<section
+  id="galeria"
+  aria-labelledby="galeria-title"
+  class="bg-white py-16 sm:py-24"
+>
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    {/* Encabezado */}
+    <div class="mx-auto max-w-2xl text-center">
+      <p
+        class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-500"
+      >
+        Our Work
+      </p>
+      <h2
+        id="galeria-title"
+        class="mt-3 font-serif text-3xl font-normal tracking-[0.04em] text-[#0a0a0a] sm:text-4xl"
+      >
+        THE LUXE GALLERY
+      </h2>
+      <div class="mx-auto mt-4 h-px w-12 bg-brand-300" aria-hidden="true"></div>
+      <p class="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-zinc-500">
+        Un vistazo a nuestro universo — detalles impecables, tonos sofisticados
+        y acabados que enamoran.
+      </p>
+    </div>
+
+    {/* Grid 3×2 (1 col en móvil, 2 en tablet, 3 en desktop) */}
+    <div
+      class="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+    >
+      {
+        images.map((img) => (
+          <figure class="group relative overflow-hidden rounded-2xl bg-zinc-100 aspect-[4/3]">
+            <img
+              src={img.src}
+              alt={img.alt}
+              class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-105"
+              loading="lazy"
+              decoding="async"
+            />
+            <div
+              class="pointer-events-none absolute inset-0 bg-black/0 transition duration-500 group-hover:bg-black/10"
+              aria-hidden="true"
+            />
+            <div
+              class="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5 group-hover:ring-black/10"
+              aria-hidden="true"
+            />
+          </figure>
+        ))
+      }
+    </div>
+
+    <p class="mt-6 text-center text-xs uppercase tracking-[0.16em] text-zinc-400">
+      Síguenos en <a
+        href="https://instagram.com/luxenailstudio"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-semibold text-brand-600 underline-offset-4 hover:underline"
+        >@luxenailstudio</a
+      > para más inspiración diaria
+    </p>
+  </div>
+</section>
