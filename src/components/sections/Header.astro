@@ -1,0 +1,59 @@
+---
+import { SITE } from '@/config/site';
+import MobileMenu from '@/components/react/MobileMenu.tsx';
+
+const lastNavItem = SITE.nav.at(-1);
+const hasNav = SITE.nav.length > 0;
+---
+
+<header class="sticky top-0 z-50 border-b border-white/[0.07] bg-black/80 backdrop-blur-xl supports-[backdrop-filter]:bg-black/60">
+  <div class="mx-auto flex h-[68px] max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <!-- Logo Luxe -->
+    <a href="#inicio" class="flex items-center gap-3" aria-label={`${SITE.name} — inicio`}>
+      <span class="flex size-8 items-center justify-center rounded-[9px] bg-gradient-to-br from-[#d48a8a] to-[#8d4f4f] shadow-[0_2px_12px_rgba(212,138,138,0.35)]">
+        <!-- Lotus minimalista / L -->
+        <svg viewBox="0 0 24 24" class="size-[14px] text-white" fill="none" aria-hidden="true">
+          <!-- Lotus petals -->
+          <path d="M12 4.5C12 4.5 8.2 8 8.2 11.1C8.2 11.1 9.7 13.2 12 14.3C14.3 13.2 15.8 11.1 15.8 11.1C15.8 8 12 4.5 12 4.5Z" fill="white" opacity="0.95"></path>
+          <path d="M7.6 8.2C6.4 9.6 6.5 12.3 8.8 13.8C9.9 12.9 10.8 11.4 10.8 11.4C9 10.2 7.6 8.2 7.6 8.2Z" fill="white" opacity="0.7"></path>
+          <path d="M16.4 8.2C16.4 8.2 15 10.2 13.2 11.4C13.2 11.4 14.1 12.9 15.2 13.8C17.5 12.3 17.6 9.6 16.4 8.2Z" fill="white" opacity="0.7"></path>
+        </svg>
+      </span>
+      <span class="font-serif text-[14px] font-bold tracking-[0.18em] text-white">{SITE.name}</span>
+    </a>
+
+    {
+      hasNav && (
+        <nav aria-label="Navegación principal" class="hidden lg:block">
+          <ul class="flex items-center gap-7">
+            {SITE.nav.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="text-[11px] font-medium uppercase tracking-[0.18em] text-white/65 transition hover:text-white"
+                >
+                  {item.label.toUpperCase()}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+
+    {
+      lastNavItem && (
+        <div class="hidden lg:block">
+          <a
+            href={lastNavItem.href}
+            class="inline-flex items-center rounded-full bg-[#d48a8a] px-6 py-[10px] text-[11px] font-semibold uppercase tracking-[0.16em] text-white shadow-[0_4px_20px_rgba(212,138,138,0.35)] transition hover:bg-[#c27474] hover:shadow-[0_6px_24px_rgba(212,138,138,0.45)]"
+          >
+            BOOK APPOINTMENT
+          </a>
+        </div>
+      )
+    }
+
+    {hasNav && <MobileMenu items={SITE.nav} client:load />}
+  </div>
+</header>
