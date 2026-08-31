@@ -80,7 +80,7 @@ export interface SiteConfig {
 export const SITE: SiteConfig = {
   name: 'LUXE NAIL STUDIO',
   legalName: 'Luxe Nail Studio S.L.',
-  tagline: 'Elegance at your fingertips',
+  tagline: 'Elegancia al alcance de tus manos',
   url: 'https://luxenailstudio.com',
   description:
     'Salón de uñas de lujo en Madrid. Manicura, pedicura, gel y nail art con productos premium en un oasis de bienestar y elegancia.',
@@ -108,11 +108,11 @@ export const SITE: SiteConfig = {
     { name: 'Facebook', url: 'https://facebook.com/luxenailstudio' },
   ],
   nav: [
-    { label: 'Home', href: '#inicio' },
-    { label: 'About', href: '#nosotros' },
-    { label: 'Services', href: '#servicios' },
-    { label: 'Gallery', href: '#galeria' },
-    { label: 'Book Now', href: '#contacto' },
+    { label: 'Inicio', href: '#inicio' },
+    { label: 'Nosotros', href: '#nosotros' },
+    { label: 'Servicios', href: '#servicios' },
+    { label: 'Galería', href: '#galeria' },
+    { label: 'Reservar', href: '#contacto' },
   ],
 };
 
@@ -161,47 +161,43 @@ export interface PageContent {
 
 export const CONTENT: PageContent = {
   hero: {
-    eyebrow: 'Elegance at your fingertips',
-    title: 'NAILS',
-    highlight: 'THAT Empower.',
+    eyebrow: 'Elegancia al alcance de tus manos',
+    title: 'UÑAS',
+    highlight: 'QUE Empoderan.',
     subtitle:
-      'Elegance at your fingertips — Descubre un oasis de belleza donde cada detalle importa. Tratamientos premium con la máxima higiene y estilo.',
-    primaryCta: { label: 'BOOK YOUR APPOINTMENT', href: '#contacto' },
-    secondaryCta: { label: 'Explore Services', href: '#servicios' },
-    stats: [
-      { value: '5000+', label: 'Clientas felices' },
-      { value: '8+', label: 'Años de excelencia' },
-      { value: '4.9', label: 'Valoración media' },
-    ],
+      'Elegancia al alcance de tus manos — Descubre un oasis de belleza donde cada detalle importa. Tratamientos premium con la máxima higiene y estilo.',
+    primaryCta: { label: 'RESERVA TU CITA', href: '#contacto' },
+    secondaryCta: { label: 'Explorar Servicios', href: '#servicios' },
+    stats: [],
   },
   features: {
-    eyebrow: 'Why Choose Us',
-    title: 'Premium Care, Perfect Nails',
+    eyebrow: 'Por qué elegirnos',
+    title: 'Cuidado premium, uñas perfectas',
     subtitle: 'Técnicas impecables, productos de alta gama y un ambiente diseñado para tu relax.',
     items: [
       {
         icon: 'sparkles',
-        title: 'Premium Products',
+        title: 'Productos Premium',
         description: 'Solo marcas de alta gama, veganas y cruelty-free para un acabado impecable.',
       },
       {
         icon: 'shield',
-        title: 'Hygienic & Safe',
+        title: 'Higiénico y Seguro',
         description: 'Esterilización medical-grade y protocolos de higiene rigurosos en cada servicio.',
       },
       {
         icon: 'heart',
-        title: 'Expert Technicians',
+        title: 'Técnicas Expertas',
         description:
           'Artistas certificadas con formación continua en las últimas tendencias internacionales.',
       },
     ],
   },
   about: {
-    eyebrow: 'Welcome to Luxe Nail Studio',
-    title: 'BEAUTY. CARE. CONFIDENCE.',
+    eyebrow: 'Bienvenidos a Luxe Nail Studio',
+    title: 'BELLEZA. CUIDADO. CONFIANZA.',
     paragraphs: [
-      'At Luxe Nail Studio, we believe every detail matters. Nuestra filosofía une elegancia atemporal con técnicas de vanguardia para realzar tu belleza natural y hacerte sentir segura, cuidada y radiante en cada visita.',
+      'En Luxe Nail Studio creemos que cada detalle importa. Nuestra filosofía une elegancia atemporal con técnicas de vanguardia para realzar tu belleza natural y hacerte sentir segura, cuidada y radiante en cada visita.',
       'Más que un salón, somos un oasis de tranquilidad en el corazón de Madrid. Un espacio boutique donde la música suave, los aromas relajantes y el trato cercano convierten cada cita en un ritual de bienestar y desconexión.',
     ],
     highlights: [
@@ -217,12 +213,12 @@ export const CONTENT: PageContent = {
   },
   services: [
     {
-      name: 'Classic Manicure',
+      name: 'Manicura Clásica',
       description:
         'Manicura clásica con limado perfecto, cutículas cuidadas y esmaltado de larga duración para un acabado natural y elegante.',
     },
     {
-      name: 'Gel Extensions',
+      name: 'Extensiones de Gel',
       description:
         'Extensiones de gel esculpidas a medida, resistentes y ultraligeras, con forma y longitud personalizadas para una manicura impecable.',
     },
@@ -232,13 +228,13 @@ export const CONTENT: PageContent = {
         'Diseños artísticos exclusivos, desde minimalistas hasta alta joyería en tus uñas, creados por nuestras nail artists expertas.',
     },
     {
-      name: 'Premium Pedicure',
+      name: 'Pedicura Premium',
       description:
         'Pedicura spa de lujo con exfoliación, masaje y esmaltado premium para unos pies suaves, bonitos y totalmente renovados.',
     },
   ],
   testimonials: {
-    eyebrow: 'Testimonials',
+    eyebrow: 'Reseñas',
     title: 'Lo que dicen nuestras clientas',
     items: [
       {
@@ -288,9 +284,9 @@ export const CONTENT: PageContent = {
     ],
   },
   cta: {
-    title: 'BOOK YOUR APPOINTMENT TODAY',
+    title: 'RESERVA TU CITA HOY',
     subtitle:
-      'Step into luxury. Leave feeling beautiful. — Reserva online en 30 segundos y recibe un diagnóstico gratuito.',
-    action: { label: 'BOOK NOW', href: '#contacto' },
+      'Entra al lujo. Sal sintiéndote hermosa. — Reserva online en 30 segundos y recibe un diagnóstico gratuito.',
+    action: { label: 'RESERVAR AHORA', href: '#contacto' },
   },
 };
