@@ -11,12 +11,12 @@ const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURICom
 <section id="contacto" aria-labelledby="contacto-title" class="border-t border-black/[0.04] bg-[#fdf6f3] py-20 sm:py-28">
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
     <div class="max-w-2xl">
-      <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#d48a8a]">Contacto</p>
+      <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#d48a8a]">Contacto — Serrano 42, Salamanca, Madrid</p>
       <h2 id="contacto-title" class="mt-3 font-serif text-3xl font-bold tracking-tight text-[#3d2222] sm:text-4xl">
-        Reserva tu cita
+        Reserva tu Manicura en Madrid
       </h2>
       <p class="mt-4 text-lg leading-relaxed text-[#8d4f4f]/70">
-        Elige cómo prefieres reservar — agenda online en 30 segundos o escríbenos por WhatsApp. Te respondemos lo antes posible en horario de apertura.
+        Elige cómo prefieres reservar tu manicura, gel o nail art en Madrid — agenda online en 30 segundos o escríbenos por WhatsApp. En Serrano 42, Salamanca, a un paso de Chamartín. Te respondemos lo antes posible en horario de apertura. Servicios desde 25€, de 45 a 120 min.
       </p>
     </div>
 
@@ -38,10 +38,10 @@ const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURICom
           </span>
 
           <h3 class="mt-5 font-serif text-2xl font-bold leading-tight tracking-tight text-[#3d2222] sm:text-[1.75rem]">
-            ¿Lista para tu momento Luxe?
+            ¿Lista para tu momento Luxe en Madrid?
           </h3>
           <p class="mt-3 max-w-md text-sm leading-relaxed text-[#8d4f4f]/70 sm:text-[15px]">
-            Elige tu servicio, fecha y profesional. Confirmación instantánea y recordatorio automático. Sin llamadas, sin esperas.
+            Elige tu servicio de manicura, gel o nail art en Serrano 42, Salamanca — cercano a Chamartín y centro de Madrid. Desde 25€, 45–120 min, con confirmación instantánea y recordatorio automático. Sin llamadas, sin esperas.
           </p>
 
           <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -49,10 +49,11 @@ const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURICom
               href={bookingHref}
               target="_blank"
               rel="noopener noreferrer"
-              class="group inline-flex items-center justify-center gap-2.5 rounded-full bg-[#d48a8a] px-7 py-3.5 text-[12px] font-bold uppercase tracking-[0.14em] text-white shadow-[0_8px_24px_rgba(212,138,138,0.32)] transition-all hover:-translate-y-px hover:bg-[#c27474] hover:shadow-[0_12px_32px_rgba(212,138,138,0.4)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300"
+              aria-label="Reservar manicura en Madrid online — Luxe Nail Studio Serrano 42"
+              class="group inline-flex items-center justify-center gap-2.5 rounded-full bg-[#d48a8a] px-7 py-3.5 text-[12px] font-bold uppercase tracking-[0.14em] text-white shadow-[0_8px_24px_rgba(212,138,138,0.32)] transition-all hover:-translate-y-px hover:bg-[#c27474] hover:shadow-[0_12px_32px_rgba(212,138,0.4)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300"
             >
               <Icon name="lucide:calendar" class="size-4" aria-hidden="true" />
-              <span>Reservar cita</span>
+              <span>Reservar manicura en Madrid</span>
               <Icon name="lucide:arrow-right" class="size-3.5 opacity-80 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
             </a>
 
@@ -60,10 +61,11 @@ const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURICom
               href={waHref}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Escríbenos por WhatsApp para manicura en Madrid"
               class="inline-flex items-center justify-center gap-2.5 rounded-full border border-black/[0.08] bg-white px-7 py-3.5 text-[12px] font-bold uppercase tracking-[0.14em] text-[#3d2222] shadow-sm transition hover:border-[#d48a8a]/30 hover:bg-[#fdf6f3] hover:text-[#8d4f4f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-200"
             >
               <Icon name="lucide:message-circle" class="size-4 text-[#25D366]" aria-hidden="true" />
-              <span>Escríbenos por WhatsApp</span>
+              <span>WhatsApp manicura Madrid</span>
             </a>
           </div>
         </div>
@@ -129,9 +131,10 @@ const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURICom
             href={mapsHref}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Ver Luxe Nail Studio en Google Maps — Serrano 42, Salamanca, Madrid"
             class="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-[#c27474] underline-offset-4 transition hover:text-[#8d4f4f] hover:underline"
           >
-            <span>Ver en Google Maps</span>
+            <span>Ver Luxe Nail Studio Madrid en Google Maps</span>
             <Icon name="lucide:arrow-right" class="size-3.5" aria-hidden="true" />
           </a>
 
@@ -154,9 +157,10 @@ const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURICom
               href={mapsHref}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Cómo llegar a Luxe Nail Studio — manicura en Madrid, Serrano 42"
               class="absolute bottom-3 right-3 inline-flex items-center gap-1 rounded-full bg-[#0a0a0a] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-white shadow-md transition hover:bg-[#3d2222]"
             >
-              Cómo llegar
+              Cómo llegar a Luxe Madrid
               <Icon name="lucide:arrow-right" class="size-3" aria-hidden="true" />
             </a>
           </div>

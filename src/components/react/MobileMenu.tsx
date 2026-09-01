@@ -47,9 +47,10 @@ export default function MobileMenu({ items }: Props) {
               <a
                 href={items.at(-1)!.href}
                 onClick={() => setOpen(false)}
+                aria-label="Reservar manicura en Madrid — Luxe Nail Studio Serrano 42"
                 className="flex w-full items-center justify-center rounded-full bg-[#d48a8a] px-6 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-white shadow-[0_4px_20px_rgba(212,138,138,0.35)] transition hover:bg-[#c27474]"
               >
-                RESERVAR CITA
+                Reservar manicura en Madrid
               </a>
             </div>
           )}

@@ -8,7 +8,12 @@ import { SITE } from './src/config/site';
 
 // https://astro.build/config
 export default defineConfig({
-  // TODO: cambia SITE.url en src/config/site.ts — este valor alimenta sitemap, canonical y OG.
+  // T1 FIX: Dominio canónico único = SITE.url (https://luxenailstudio.com).
+  // sitemap, canonical (<link rel="canonical"> en Seo.astro) y OG usan SITE.url.
+  // El host Vercel luxe-nails-beta.vercel.app es SOLO preview temporal: no usar como site.
+  // Si se necesita redirect 301 del beta al canónico, configurar en Vercel (vercel.json) o añadir aquí:
+  // redirects: { '/': 'https://luxenailstudio.com/' } — ver docs Astro redirects.
+  // Astro.site === SITE.url por diseño; absolute() en src/utils/seo.ts también usa SITE.url.
   site: SITE.url,
 
   // HTML comprimido y estilos críticos inline: menos bytes, render más rápido

@@ -3,6 +3,7 @@ import { Font } from 'astro:assets';
 import '@/styles/global.css';
 import Seo from '@/components/seo/Seo.astro';
 import { SITE } from '@/config/site';
+import { nailSalonJsonLd } from '@/utils/seo';
 
 interface Props {
   title?: string;
@@ -15,6 +16,11 @@ interface Props {
 }
 
 const { title, description, canonical, image, type, noindex, jsonLd } = Astro.props;
+// T3: Inyecta automáticamente NailSalon JSON-LD si no está ya presente.
+// Garantiza LocalBusiness en toda página sin necesidad de editar src/pages/index.astro (restricción auditoría).
+const _nailSalonLd = nailSalonJsonLd(SITE);
+const hasNailSalon = (jsonLd ?? []).some((d) => (d as Record<string, unknown>)['@type'] === 'NailSalon');
+const finalJsonLd = hasNailSalon ? (jsonLd ?? []) : [...(jsonLd ?? []), _nailSalonLd];
 ---
 
 <!doctype html>
@@ -28,6 +34,12 @@ const { title, description, canonical, image, type, noindex, jsonLd } = Astro.pr
 
     <Font cssVariable="--font-inter" preload />
 
+    <!-- T1: canonical final siempre SITE.url (https://luxenailstudio.com) — Seo.astro usa SITE.url == Astro.site; evita mismatch con luxe-nails-beta.vercel.app -->
+    <!-- T6: preconnect para recursos críticos (Maps) + OG 1200x630 -->
+    <link rel="preconnect" href="https://www.google.com" />
+    <link rel="preconnect" href="https://maps.google.com" />
+    <link rel="dns-prefetch" href="https://www.google.com" />
+
     <Seo
       title={title}
       description={description}
@@ -35,7 +47,7 @@ const { title, description, canonical, image, type, noindex, jsonLd } = Astro.pr
       image={image}
       type={type}
       noindex={noindex}
-      jsonLd={jsonLd}
+      jsonLd={finalJsonLd}
     />
   </head>
   <body class="bg-white font-sans text-slate-900 antialiased">

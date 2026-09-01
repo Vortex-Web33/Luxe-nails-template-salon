@@ -16,17 +16,17 @@ const { cta } = CONTENT;
       <p
         class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-300"
       >
-        ¿Lista para brillar?
+        ¿Lista para brillar en Madrid?
       </p>
 
       <h2
         id="cta-title"
         class="mt-4 max-w-xl font-serif text-3xl font-semibold uppercase leading-[0.95] tracking-[0.04em] text-white sm:text-4xl lg:text-[2.7rem]"
       >
-        {/* Título en español desde CONTENT */}
+        {/* H2 geo-optimizado: incluye Manicura en Madrid */}
         <span class="block text-white">RESERVA TU</span>
-        <span class="block text-white">CITA</span>
-        <span class="block text-brand-200">HOY</span>
+        <span class="block text-brand-200">MANICURA</span>
+        <span class="block text-white text-2xl sm:text-3xl lg:text-[2rem]">EN MADRID HOY</span>
         <span class="sr-only">{cta.title}</span>
       </h2>
 
@@ -39,11 +39,13 @@ const { cta } = CONTENT;
       <div class="mt-8 flex flex-wrap items-center gap-4">
         <a
           href={cta.action.href}
+          aria-label="Reservar manicura en Madrid — Luxe Nail Studio Serrano 42, Salamanca"
           class="inline-flex items-center justify-center rounded-full bg-brand-500 px-8 py-3.5 text-sm font-bold uppercase tracking-[0.12em] text-white shadow-[0_8px_30px_rgba(212,138,138,0.35)] transition hover:bg-brand-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
         >
           {cta.action.label}
         </a>
       </div>
+      <p class="mt-4 text-xs uppercase tracking-[0.16em] text-white/30">Serrano 42, Salamanca — a un paso de Chamartín · Madrid · Desde 25€ · 45–120 min</p>
     </div>
 
     {/* Columna imagen — frasco esmalte rosa */}

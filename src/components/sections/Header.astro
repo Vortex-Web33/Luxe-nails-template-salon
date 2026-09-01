@@ -12,7 +12,7 @@ const hasNav = SITE.nav.length > 0;
 >
   <div class="mx-auto flex h-[68px] max-w-6xl items-center justify-between gap-6 px-4 sm:px-6 lg:gap-10 lg:px-8">
     <!-- Logo Luxe -->
-    <a href="#inicio" class="flex shrink-0 items-center gap-3 mr-6 lg:mr-10 xl:mr-16 lg:ml-0" aria-label={`${SITE.name} — inicio`}>
+    <a href="/#inicio" class="flex shrink-0 items-center gap-3 mr-6 lg:mr-10 xl:mr-16 lg:ml-0" aria-label={`${SITE.name} — inicio`}>
       <span class="flex size-8 items-center justify-center rounded-[9px] bg-gradient-to-br from-[#d48a8a] to-[#8d4f4f] shadow-[0_2px_12px_rgba(212,138,138,0.35)]">
         <!-- Lotus minimalista / L -->
         <svg viewBox="0 0 24 24" class="size-[14px] text-white" fill="none" aria-hidden="true">
@@ -49,9 +49,10 @@ const hasNav = SITE.nav.length > 0;
         <div class="hidden lg:block ml-auto">
           <a
             href={lastNavItem.href}
-            class="inline-flex items-center rounded-full bg-[#d48a8a] px-6 py-[10px] text-[11px] font-semibold uppercase tracking-[0.16em] text-white shadow-[0_4px_20px_rgba(212,138,138,0.35)] transition hover:bg-[#c27474] hover:shadow-[0_6px_24px_rgba(212,138,138,0.45)]"
+            aria-label="Reservar manicura en Madrid — Luxe Nail Studio Serrano 42"
+            class="inline-flex items-center rounded-full bg-[#d48a8a] px-6 py-[10px] text-[11px] font-semibold uppercase tracking-[0.16em] text-white shadow-[0_4px_20px_rgba(212,138,138,0.35)] transition hover:bg-[#c27474] hover:shadow-[0_6px_24px_rgba(212,138,0.45)]"
           >
-            RESERVAR CITA
+            Reservar manicura en Madrid
           </a>
         </div>
       )

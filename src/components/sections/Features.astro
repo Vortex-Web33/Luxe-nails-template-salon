@@ -17,6 +17,14 @@ const fallbackImages = [
   'https://images.unsplash.com/photo-1634449571010-02389ed0f357?q=80&w=800&auto=format&fit=crop',
 ];
 
+// Slugs indexables — arquitectura híbrida /servicios/[slug]
+const serviceSlugs = [
+  '/servicios/manicura-madrid',
+  '/servicios/unas-gel-madrid',
+  '/servicios/nail-art-madrid',
+  '/servicios/pedicura-madrid',
+];
+
 // Decisión de datos: usa CONTENT.services (4 items) si existe; si está vacío, fallback a features.items
 const hasServices = services.length > 0;
 const cards = hasServices
@@ -24,6 +32,7 @@ const cards = hasServices
       title: s.name,
       description: s.description,
       image: serviceImages[i] ?? fallbackImages[i % fallbackImages.length],
+      href: serviceSlugs[i] ?? '/servicios',
     }))
   : features.items.length > 0
     ? [
@@ -31,6 +40,7 @@ const cards = hasServices
           title: f.title,
           description: f.description,
           image: serviceImages[i] ?? fallbackImages[i % fallbackImages.length],
+          href: serviceSlugs[i] ?? '/servicios',
         })),
         // Si solo hay 3 features, añade un cuarto visual para completar el grid 4
         ...(features.items.length === 3
@@ -40,6 +50,7 @@ const cards = hasServices
                 description:
                   'Pedicura spa de lujo con exfoliación, masaje y esmaltado premium para unos pies totalmente renovados.',
                 image: serviceImages[3],
+                href: serviceSlugs[3],
               },
             ]
           : []),
@@ -57,7 +68,7 @@ const subtitle = features.subtitle;
   class="bg-[#fdf6f3] py-20 sm:py-28 lg:py-32"
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    {/* Encabezado — fiel a referencia: left on desktop, center on mobile */}
+    {/* Encabezado — H2 geo-optimizado con keyword Manicura en Madrid */}
     <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
       <div class="max-w-xl">
         <p
@@ -71,13 +82,14 @@ const subtitle = features.subtitle;
         >
           <span class="block text-brand-500">SERVICIOS</span>
           <span class="block">EXCLUSIVOS</span>
+          <span class="mt-2 block text-[1.35rem] font-semibold tracking-[0.08em] text-brand-500 sm:text-[1.6rem] lg:text-[1.75rem]">de Manicura en Madrid</span>
         </h2>
         <p class="mt-5 max-w-xl text-base leading-relaxed text-zinc-500 sm:text-[17px]">
           {subtitle}
         </p>
       </div>
       <div class="hidden items-center gap-3 lg:flex">
-        <span class="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-900">Explorar servicios</span>
+        <a href="/servicios" aria-label="Explorar manicura en Madrid y ver todos los servicios" class="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-900 hover:text-brand-600 transition">Explorar manicura en Madrid</a>
         <span class="h-px w-12 bg-zinc-900" aria-hidden="true"></span>
       </div>
       {/* mobile divider */}
@@ -86,16 +98,19 @@ const subtitle = features.subtitle;
     {/* subtitle eyebrow mobile center fallback */}
     <p class="mt-3 hidden text-center text-xs uppercase tracking-[0.2em] text-brand-500 lg:hidden">{eyebrow}</p>
 
-    {
+      {
       cards.length > 0 ? (
         <div class="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-          {cards.map((card) => (
+          {cards.map((card) => {
+            const anchorLabel = `Ver ${card.title.toLowerCase()} en Madrid`;
+            const cardHref = (card as { href?: string }).href ?? '/servicios';
+            return (
             <article class="group relative flex min-h-[460px] flex-col overflow-hidden rounded-[22px] bg-[#111] sm:min-h-[500px] lg:min-h-[560px]">
               {/* Imagen */}
               <div class="absolute inset-0 overflow-hidden">
                 <img
                   src={card.image}
-                  alt={card.title}
+                  alt={`${card.title} en Madrid — Luxe Nail Studio Serrano 42`}
                   class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-105"
                   loading="lazy"
                   decoding="async"
@@ -126,13 +141,13 @@ const subtitle = features.subtitle;
                 <p class="mt-2.5 line-clamp-3 text-[15px] leading-relaxed text-white/75">
                   {card.description}
                 </p>
-                <span class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-200 opacity-0 transition duration-300 group-hover:opacity-100">
-                  Descubrir
+                <a href={cardHref} aria-label={`${anchorLabel} — ver detalles y reservar cita en Serrano 42`} class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-200 opacity-0 transition duration-300 group-hover:opacity-100 hover:text-white focus-visible:opacity-100 focus-visible:outline focus-visible:outline-1 focus-visible:outline-brand-200">
+                  Ver servicio
                   <Icon name="lucide:arrow-right" class="size-3.5" aria-hidden="true" />
-                </span>
+                </a>
               </div>
             </article>
-          ))}
+          )})}
         </div>
       ) : (
         <p class="mx-auto mt-12 max-w-lg rounded-2xl border border-dashed border-white/10 bg-white/[0.03] px-6 py-10 text-center text-sm text-white/40">

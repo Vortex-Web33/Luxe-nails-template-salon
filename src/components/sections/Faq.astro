@@ -14,6 +14,9 @@ const hasItems = faq.items.length > 0;
         <h2 id="faq-title" class="mt-3 text-center font-serif text-4xl font-semibold tracking-tight text-[#1a1a1a] sm:text-5xl lg:text-[3.2rem]">
           {faq.title}
         </h2>
+        <p class="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-zinc-500 sm:text-lg">
+          Resolvemos tus dudas sobre manicura, uñas de gel y nail art en nuestro salón de Serrano 42, Salamanca — precios desde 25€, duración 45–120 min, productos premium y atención cercana en Madrid.
+        </p>
 
         <div class="mt-14">
           <FaqAccordion items={faq.items} client:visible />

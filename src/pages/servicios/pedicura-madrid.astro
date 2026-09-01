@@ -1,0 +1,250 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/sections/Header.astro';
+import Footer from '@/components/sections/Footer.astro';
+import { SITE } from '@/config/site';
+import { Icon } from 'astro-icon/components';
+
+const canonical = `${SITE.url}/servicios/pedicura-madrid/`;
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: SITE.url },
+    { '@type': 'ListItem', position: 2, name: 'Servicios', item: `${SITE.url}/servicios/` },
+    { '@type': 'ListItem', position: 3, name: 'Pedicura en Madrid', item: canonical },
+  ],
+};
+
+const serviceLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Pedicura en Madrid — Pedicura Spa Premium',
+  description: 'Pedicura spa premium en Madrid en Luxe Nail Studio, Serrano 42, Salamanca. Exfoliación, masaje, hidratación y esmaltado vegano desde 35€ en 60 min, con higiene medical-grade. Pies suaves y bonitos semanas. Reserva online.',
+  provider: {
+    '@type': 'NailSalon',
+    name: SITE.name,
+    url: SITE.url,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Calle Serrano 42',
+      addressLocality: 'Madrid',
+      postalCode: '28001',
+      addressRegion: 'Madrid',
+      addressCountry: 'ES',
+    },
+    telephone: SITE.contact.phone,
+  },
+  areaServed: { '@type': 'City', name: 'Madrid', addressCountry: 'ES' },
+  serviceType: 'Pedicura',
+  url: canonical,
+  image: 'https://images.unsplash.com/photo-1515688594390-b649af70d282?q=80&w=1200&auto=format&fit=crop',
+  offers: {
+    '@type': 'Offer',
+    price: '35',
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/InStock',
+    url: canonical,
+    priceValidUntil: '2027-12-31',
+    description: 'Pedicura spa premium 60 min desde 35€ — exfoliación, masaje y esmaltado premium',
+  },
+};
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: '¿Cuánto cuesta la pedicura en Madrid en Luxe Nail Studio?', acceptedAnswer: { '@type': 'Answer', text: 'Desde 35€ en 60 min en Serrano 42, Salamanca. Incluye exfoliación, masaje, hidratación y esmaltado premium vegano. Suplemento semipermanente disponible.' } },
+    { '@type': 'Question', name: '¿Cuánto dura la pedicura spa?', acceptedAnswer: { '@type': 'Answer', text: 'Pies suaves 3–4 semanas y esmaltado intacto 2–3 semanas (semipermanente hasta 4). Recomendamos repetir cada 3–4 semanas para mantener hidratación y forma.' } },
+    { '@type': 'Question', name: '¿Dónde hacerme pedicura en Salamanca, Madrid?', acceptedAnswer: { '@type': 'Answer', text: 'En Luxe Nail Studio, Calle Serrano 42, 28001 Madrid, barrio de Salamanca. Metro Serrano / Rubén Darío, a 5 min de Chamartín, Chamberí y Retiro. Lun–Sáb 10:00–20:00.' } },
+  ],
+};
+
+const jsonLd = [breadcrumbLd, serviceLd, faqLd];
+---
+
+<Layout
+  title="Pedicura en Madrid | Pedicura Spa Premium Salamanca | Luxe Nail Studio"
+  description="Pedicura en Madrid — spa premium desde 35€ en 60 min en Serrano 42, Salamanca, a minutos de Chamartín. Exfoliación, masaje, hidratación y esmaltado vegano con higiene medical-grade. Reserva en 30 segundos."
+  canonical={canonical}
+  jsonLd={jsonLd}
+>
+  <Header />
+
+  <main id="main" class="bg-white">
+    <section class="relative overflow-hidden bg-black pb-16 pt-28 sm:pb-20 sm:pt-32 lg:pt-36">
+      <div class="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1515688594390-b649af70d282?q=80&w=2000&auto=format&fit=crop" alt="Pedicura en Madrid — pedicura spa premium con masaje y esmaltado Serrano 42" class="h-full w-full object-cover opacity-30" loading="eager" decoding="async" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20"></div>
+      </div>
+      <div class="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <nav aria-label="Miga de pan" class="text-xs tracking-wide text-white/60">
+          <ol class="flex flex-wrap items-center gap-2">
+            <li><a href="/" class="hover:text-white hover:underline underline-offset-4">Inicio</a></li>
+            <li aria-hidden="true">/</li>
+            <li><a href="/servicios" class="hover:text-white hover:underline underline-offset-4">Servicios</a></li>
+            <li aria-hidden="true">/</li>
+            <li aria-current="page" class="text-white font-medium">Pedicura en Madrid</li>
+          </ol>
+        </nav>
+        <p class="mt-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80 backdrop-blur">Serrano 42, Salamanca • Spa & bienestar • Madrid centro</p>
+        <h1 class="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-[0.95] tracking-tight text-white sm:text-5xl lg:text-[3.6rem]">
+          Pedicura en Madrid
+        </h1>
+        <p class="mt-4 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">
+          Pedicura spa premium para pies suaves, bonitos y renovados. Exfoliación, masaje relajante, hidratación profunda y esmaltado premium con esmaltes veganos de larga duración.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <span class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-[#1a1a1a]"><Icon name="lucide:clock" class="size-3.5" aria-hidden="true" /> 60 min</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-[#d48a8a] px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-white">desde 35€</span>
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-white backdrop-blur">Salamanca • Chamartín</span>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/#contacto" class="inline-flex items-center gap-2 rounded-full bg-[#d48a8a] px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-[0_8px_24px_rgba(212,138,138,0.32)] transition hover:bg-[#c27474]">Reservar pedicura en Madrid <Icon name="lucide:arrow-right" class="size-4" aria-hidden="true" /></a>
+          <a href="/servicios" class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur transition hover:bg-white/10">Ver todos los servicios</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-black/[0.06] bg-[#fdf6f3] py-8">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+            <p class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-600"><Icon name="lucide:clock" class="size-3.5" aria-hidden="true" /> Duración</p>
+            <p class="mt-2 font-serif text-2xl font-semibold text-[#1a1a1a]">60 min</p>
+            <p class="mt-1 text-sm text-zinc-500">Ritual completo. Sin prisas, con tiempo para masaje.</p>
+          </div>
+          <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+            <p class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-600"><Icon name="lucide:gem" class="size-3.5" aria-hidden="true" /> Precio</p>
+            <p class="mt-2 font-serif text-2xl font-semibold text-[#1a1a1a]">desde 35€</p>
+            <p class="mt-1 text-sm text-zinc-500">Incluye exfoliación, masaje e hidratación. Semipermanente +7€.</p>
+          </div>
+          <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+            <p class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-600"><Icon name="lucide:map-pin" class="size-3.5" aria-hidden="true" /> Ubicación</p>
+            <p class="mt-2 font-serif text-lg font-semibold text-[#1a1a1a]">Serrano 42, Salamanca</p>
+            <p class="mt-1 text-sm text-zinc-500">A 5 min de Chamartín, Chamberí y Retiro. Metro Serrano / Rubén Darío.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 sm:py-20 lg:py-24">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 gap-10 lg:grid-cols-[1.7fr_1fr] lg:gap-12">
+          <div class="min-w-0">
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-brand-500">Spa & bienestar</p>
+            <h2 class="mt-3 font-serif text-3xl font-bold leading-tight tracking-tight text-[#1a1a1a] sm:text-4xl">
+              Pedicura spa en Salamanca — a minutos de Chamartín, para pies renovados semanas
+            </h2>
+            <div class="prose prose-zinc mt-6 max-w-none prose-p:leading-relaxed prose-p:text-zinc-600 prose-strong:text-zinc-800 prose-a:text-brand-600 hover:prose-a:text-brand-700 prose-a:underline-offset-4 prose-headings:font-serif">
+              <p>
+                Nuestra <strong>pedicura en Madrid</strong> en <strong>Luxe Nail Studio, Serrano 42 (Salamanca)</strong> es un ritual de bienestar completo, no solo un esmaltado. Atendemos a clientas de <strong>Chamartín, Chamberí, Retiro y todo Madrid centro</strong> que pasan muchas horas de pie, hacen deporte o simplemente quieren sentir sus pies ligeros, suaves y bonitos dentro y fuera de la sandalia. En 60 minutos combinamos cuidado podológico suave, exfoliación, masaje e hidratación profunda con un acabado estético impecable.
+              </p>
+              <p>
+                Empezamos con un baño tibio con sales minerales que ablanda y relaja, seguido de una exfoliación con gránulos finos que retira células muertas sin agredir. Trabajamos talones y durezas con limas desechables y técnica respetuosa — nunca cuchillas — e hidratamos con manteca de karité y aceites vegetales que devuelven elasticidad. El masaje de gemelos y planta, con presión media, activa la circulación y libera tensión acumulada: muchas clientas lo describen como el momento más relajante de la semana. Todo el instrumental se esteriliza en autoclave medical-grade y las limas son de un solo uso por persona, como en clínica.
+              </p>
+              <p>
+                Para el acabado, cuidamos la forma de la uña — corte recto, limado suave y cutículas pulidas — y esmaltamos con <strong>esmaltes premium veganos, cruelty-free y de larga duración</strong>. Puedes elegir clásico para un brillo natural o <strong>semipermanente</strong> si quieres color intacto 3–4 semanas sin descascarillados, ideal en verano o antes de un viaje. Desde nudes pulidos y rosas empolvados hasta rojos intensos y francesas sutiles, te asesoramos según tu tono de piel y tu calzado. El secado es rápido y el brillo permanece, incluso con zapato cerrado. Y si te apetece un look coordinado, combinamos la pedicura con tu <a href="/servicios/manicura-madrid">manicura en Madrid</a> o con <a href="/servicios/nail-art-madrid">nail art en Madrid</a> a juego — misma familia cromática o contraste diseñado.
+              </p>
+              <h3 class="text-xl font-semibold text-[#1a1a1a]">Beneficios de nuestra pedicura spa en Madrid</h3>
+              <ul class="list-disc pl-6">
+                <li><strong>Pies suaves de verdad:</strong> exfoliación + hidratación profunda, sin sensación de tirantez. Adiós a talones agrietados.</li>
+                <li><strong>Relajación inmediata:</strong> masaje que descarga gemelos y planta. Sales, aroma suave y presión justa.</li>
+                <li><strong>Higiene máxima:</strong> instrumental esterilizado, limas desechables y protocolos como en centro médico.</li>
+                <li><strong>Color duradero:</strong> esmaltado intacto semanas, sin marcas de sábana ni roce del calzado.</li>
+              </ul>
+              <p>
+                Ubicadas en <strong>Serrano 42, Salamanca</strong>, a 5 min de Chamartín y Chamartín — Metro Serrano / Rubén Darío, bus 1, 19, 51 — facilitamos que vengas incluso en tu hora de comida o al salir de clase o la oficina. El sillón es cómodo, la luz cálida y el trato cercano: te explicamos cómo mantener los pies suaves en casa — exfoliación semanal suave, crema diaria y aceite de cutículas — para alargar el resultado hasta tu próxima visita cada 3–4 semanas. ¿Quieres elevar la experiencia? Añade exfoliación extra de talón o combina con <a href="/servicios/unas-gel-madrid">uñas de gel en Madrid</a> en manos para un ritual completo de 2 horas que te deja renovada. Reserva tu <strong>pedicura en Madrid</strong> hoy: estamos en <strong>Calle Serrano 42, 28001</strong>, Lun–Sáb 10:00–20:00, última cita una hora antes del cierre. Escríbenos por WhatsApp si dudas entre clásico o semipermanente y te asesoramos con fotos reales de acabados.
+              </p>
+            </div>
+
+            <h3 class="mt-10 font-serif text-xl font-semibold tracking-tight text-[#1a1a1a]">Ritual paso a paso</h3>
+            <ol class="mt-4 space-y-3">
+              <li class="flex gap-3"><span class="flex size-7 shrink-0 items-center justify-center rounded-full bg-black text-xs font-bold text-white">1</span><span class="text-sm leading-relaxed text-zinc-600"><strong class="text-zinc-800">Baño & exfoliación (15 min):</strong> sales minerales, gránulos finos y limado suave de durezas.</span></li>
+              <li class="flex gap-3"><span class="flex size-7 shrink-0 items-center justify-center rounded-full bg-black text-xs font-bold text-white">2</span><span class="text-sm leading-relaxed text-zinc-600"><strong class="text-zinc-800">Uñas & cutículas (10 min):</strong> corte recto, forma y pulido respetuoso.</span></li>
+              <li class="flex gap-3"><span class="flex size-7 shrink-0 items-center justify-center rounded-full bg-black text-xs font-bold text-white">3</span><span class="text-sm leading-relaxed text-zinc-600"><strong class="text-zinc-800">Masaje & hidratación (15 min):</strong> manteca de karité, aceites y masaje circulatorio.</span></li>
+              <li class="flex gap-3"><span class="flex size-7 shrink-0 items-center justify-center rounded-full bg-black text-xs font-bold text-white">4</span><span class="text-sm leading-relaxed text-zinc-600"><strong class="text-zinc-800">Esmaltado (15–20 min):</strong> base, color y top coat clásico o semipermanente curado en LED.</span></li>
+            </ol>
+
+            <div class="mt-10 flex flex-wrap gap-3">
+              <a href="/#contacto" class="inline-flex items-center gap-2 rounded-full bg-[#d48a8a] px-7 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white shadow transition hover:bg-[#c27474]">Reservar pedicura en Madrid — desde 35€</a>
+              <a href="/servicios" class="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-7 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#1a1a1a] transition hover:border-brand-300/40 hover:text-brand-600">Ver todos los servicios</a>
+            </div>
+
+            <p class="mt-6 text-xs leading-relaxed text-zinc-400">
+              También te puede interesar: <a href="/servicios/manicura-madrid" class="font-medium text-brand-600 hover:underline">manicura en Madrid</a> • <a href="/servicios/unas-gel-madrid" class="font-medium text-brand-600 hover:underline">uñas de gel en Madrid</a> • <a href="/servicios/nail-art-madrid" class="font-medium text-brand-600 hover:underline">nail art en Madrid</a> • <a href="/servicios" class="font-medium text-brand-600 hover:underline">todos los servicios</a> • <a href="/#galeria" class="font-medium text-brand-600 hover:underline">galería</a> • <a href="/#nosotros" class="font-medium text-brand-600 hover:underline">sobre nosotras</a>
+            </p>
+          </div>
+
+          <aside class="space-y-6">
+            <div class="overflow-hidden rounded-[20px] border border-black/5 bg-white shadow-sm">
+              <img src="https://images.unsplash.com/photo-1515688594390-b649af70d282?q=80&w=800&auto=format&fit=crop" alt="Pedicura en Madrid — pies suaves con esmaltado perfecto y masaje relajante" class="aspect-[4/3] w-full object-cover" loading="lazy" decoding="async" />
+              <div class="p-6">
+                <h3 class="font-serif text-base font-semibold text-[#1a1a1a]">Bienestar que se nota al caminar</h3>
+                <p class="mt-2 text-sm leading-relaxed text-zinc-500">Exfoliación suave, hidratación profunda y masaje circulatorio. Sales minerales, karité y aceites vegetales para pies ligeros.</p>
+                <a href="/#contacto" class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0a0a0a] px-5 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:bg-[#3d2222]">Reservar ahora</a>
+                <p class="mt-3 text-center text-xs text-zinc-400">Recomendada cada 3–4 semanas</p>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-brand-200/40 bg-[#fdf6f3] p-6">
+              <h3 class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-700">¿Qué incluye?</h3>
+              <ul class="mt-3 space-y-2 text-sm leading-relaxed text-zinc-600">
+                <li class="flex gap-2"><span class="text-brand-400">•</span> Baño tibio con sales minerales</li>
+                <li class="flex gap-2"><span class="text-brand-400">•</span> Exfoliación y limado suave de durezas</li>
+                <li class="flex gap-2"><span class="text-brand-400">•</span> Corte, forma y cutículas perfectas</li>
+                <li class="flex gap-2"><span class="text-brand-400">•</span> Masaje e hidratación profunda</li>
+                <li class="flex gap-2"><span class="text-brand-400">•</span> Esmaltado premium clásico o semipermanente</li>
+              </ul>
+            </div>
+
+            <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+              <h3 class="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-800">Otros servicios en Madrid</h3>
+              <ul class="mt-4 space-y-3">
+                <li><a href="/servicios/manicura-madrid" class="flex items-center justify-between rounded-xl border border-black/5 bg-[#fdf6f3] px-4 py-3 text-sm font-medium text-[#1a1a1a] transition hover:border-brand-200 hover:text-brand-700"><span>Manicura en Madrid</span><span class="text-xs text-zinc-400">desde 25€</span></a></li>
+                <li><a href="/servicios/unas-gel-madrid" class="flex items-center justify-between rounded-xl border border-black/5 bg-white px-4 py-3 text-sm font-medium text-[#1a1a1a] transition hover:border-brand-200 hover:text-brand-700"><span>Uñas de Gel en Madrid</span><span class="text-xs text-zinc-400">desde 45€</span></a></li>
+                <li><a href="/servicios/nail-art-madrid" class="flex items-center justify-between rounded-xl border border-black/5 bg-white px-4 py-3 text-sm font-medium text-[#1a1a1a] transition hover:border-brand-200 hover:text-brand-700"><span>Nail Art en Madrid</span><span class="text-xs text-zinc-400">desde 30€</span></a></li>
+                <li><a href="/servicios" class="flex items-center justify-center rounded-xl bg-black px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#3d2222]">Ver todos →</a></li>
+              </ul>
+            </div>
+
+            <div class="rounded-2xl bg-black p-6 text-white">
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-300">Salamanca • Chamartín • Retiro</p>
+              <h3 class="mt-2 font-serif text-lg font-semibold">¿Vienes con tiempo?</h3>
+              <p class="mt-2 text-sm leading-relaxed text-white/70">Combina pedicura + manicura en 105 min y sal con look completo. Ideal antes de boda, viaje o evento.</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Calle+Serrano+42+Madrid" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-300 hover:text-white hover:underline underline-offset-4">Cómo llegar a Serrano 42 <Icon name="lucide:arrow-right" class="size-3.5" aria-hidden="true" /></a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-black/[0.06] bg-[#fdf6f3] py-12 sm:py-16">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl">
+          <h2 class="font-serif text-2xl font-bold tracking-tight text-[#1a1a1a] sm:text-3xl">Preguntas sobre pedicura en Madrid</h2>
+          <div class="mt-8 space-y-6">
+            <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+              <h3 class="font-semibold text-[#1a1a1a]">¿Cuánto cuesta y cuánto dura?</h3>
+              <p class="mt-2 text-sm leading-relaxed text-zinc-600">60 min desde 35€ en Serrano 42, Salamanca. Pies suaves 3–4 semanas y color 2–3 semanas (semipermanente hasta 4).</p>
+            </div>
+            <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+              <h3 class="font-semibold text-[#1a1a1a]">¿Es higiénica?</h3>
+              <p class="mt-2 text-sm leading-relaxed text-zinc-600">Sí, esterilización medical-grade, limas desechables por clienta y desinfección entre pasos. Máxima seguridad.</p>
+            </div>
+            <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+              <h3 class="font-semibold text-[#1a1a1a]">¿Dónde reservo?</h3>
+              <p class="mt-2 text-sm leading-relaxed text-zinc-600">En <a href="/#contacto" class="font-semibold text-brand-600 hover:underline">/#contacto</a> reservas online en 30 segundos, o por WhatsApp. Estamos en Calle Serrano 42, 28001 Madrid, a minutos de Chamartín.</p>
+            </div>
+          </div>
+          <div class="mt-8 text-center">
+            <a href="/#contacto" class="inline-flex items-center gap-2 rounded-full bg-[#d48a8a] px-7 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white shadow transition hover:bg-[#c27474]">Reservar pedicura en Madrid</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

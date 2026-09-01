@@ -1,0 +1,266 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/sections/Header.astro';
+import Footer from '@/components/sections/Footer.astro';
+import { SITE } from '@/config/site';
+import { Icon } from 'astro-icon/components';
+
+const canonical = `${SITE.url}/servicios/manicura-madrid/`;
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: SITE.url },
+    { '@type': 'ListItem', position: 2, name: 'Servicios', item: `${SITE.url}/servicios/` },
+    { '@type': 'ListItem', position: 3, name: 'Manicura en Madrid', item: canonical },
+  ],
+};
+
+const serviceLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Manicura en Madrid — Manicura Clásica y Semipermanente',
+  description: 'Manicura clásica y semipermanente en Madrid centro. En Luxe Nail Studio, Serrano 42, Salamanca: limado perfecto, cutículas cuidadas, esmaltado de larga duración desde 25€ en 45 min. Reserva online.',
+  provider: {
+    '@type': 'NailSalon',
+    name: SITE.name,
+    url: SITE.url,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Calle Serrano 42',
+      addressLocality: 'Madrid',
+      postalCode: '28001',
+      addressRegion: 'Madrid',
+      addressCountry: 'ES',
+    },
+    telephone: SITE.contact.phone,
+  },
+  areaServed: { '@type': 'City', name: 'Madrid', addressCountry: 'ES' },
+  serviceType: 'Manicura',
+  url: canonical,
+  image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=1200&auto=format&fit=crop',
+  offers: {
+    '@type': 'Offer',
+    price: '25',
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/InStock',
+    url: canonical,
+    priceValidUntil: '2027-12-31',
+    description: 'Manicura clásica 45 min desde 25€ — opción semipermanente disponible',
+  },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Manicura en Madrid — catálogo',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Manicura clásica', description: '45 min, esmaltado clásico' }, price: '25', priceCurrency: 'EUR' },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Manicura semipermanente', description: '60 min, brillo 2–3 semanas' }, price: '32', priceCurrency: 'EUR' },
+    ],
+  },
+};
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: '¿Cuánto cuesta la manicura en Madrid en Luxe Nail Studio?', acceptedAnswer: { '@type': 'Answer', text: 'Desde 25€ la manicura clásica (45 min) y desde 32€ la semipermanente (60 min) en Serrano 42, Salamanca. Precio cerrado, sin sorpresas, con diagnóstico y asesoría incluidos.' } },
+    { '@type': 'Question', name: '¿Cuánto dura la manicura semipermanente?', acceptedAnswer: { '@type': 'Answer', text: 'Entre 2 y 3 semanas intacta con brillo espejo, si sigues nuestros cuidados. Ofrecemos retoque express y garantía de 5 días por descascarillados.' } },
+    { '@type': 'Question', name: '¿Dónde está el salón de manicura en Madrid?', acceptedAnswer: { '@type': 'Answer', text: 'En Calle Serrano 42, 28001 Madrid, barrio de Salamanca. Metro Serrano / Rubén Darío, a 5 min de Chamartín, Chamberí y Retiro. Lun–Sáb 10:00–20:00.' } },
+  ],
+};
+
+const jsonLd = [breadcrumbLd, serviceLd, faqLd];
+---
+
+<Layout
+  title="Manicura en Madrid | Manicura Clásica y Semipermanente Salamanca | Luxe Nail Studio"
+  description="Manicura en Madrid centro — clásica desde 25€ en 45 min y semipermanente desde 32€ en 60 min. En Serrano 42, Salamanca, a minutos de Chamartín. Limado perfecto, cutículas cuidadas y esmaltado premium. Reserva en 30 segundos."
+  canonical={canonical}
+  jsonLd={jsonLd}
+>
+  <Header />
+
+  <main id="main" class="bg-white">
+    <!-- Hero -->
+    <section class="relative overflow-hidden bg-black pb-16 pt-28 sm:pb-20 sm:pt-32 lg:pt-36">
+      <div class="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=2000&auto=format&fit=crop" alt="Manicura en Madrid — manicura clásica elegante Luxe Nail Studio Serrano 42" class="h-full w-full object-cover opacity-30" loading="eager" decoding="async" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20"></div>
+      </div>
+      <div class="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <nav aria-label="Miga de pan" class="text-xs tracking-wide text-white/60">
+          <ol class="flex flex-wrap items-center gap-2">
+            <li><a href="/" class="hover:text-white hover:underline underline-offset-4">Inicio</a></li>
+            <li aria-hidden="true">/</li>
+            <li><a href="/servicios" class="hover:text-white hover:underline underline-offset-4">Servicios</a></li>
+            <li aria-hidden="true">/</li>
+            <li aria-current="page" class="text-white font-medium">Manicura en Madrid</li>
+          </ol>
+        </nav>
+        <p class="mt-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80 backdrop-blur">Serrano 42, Salamanca • Metro Serrano • Madrid centro</p>
+        <h1 class="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-[0.95] tracking-tight text-white sm:text-5xl lg:text-[3.6rem]">
+          Manicura en Madrid
+        </h1>
+        <p class="mt-4 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">
+          Manicura clásica y semipermanente en el corazón de Madrid. Limado perfecto, cutículas cuidadas con precisión y esmaltado de larga duración con base fortalecedora y top coat brillante. Resultado natural, elegante y resistente.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <span class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-[#1a1a1a]"><Icon name="lucide:clock" class="size-3.5" aria-hidden="true" /> 45 min</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-[#d48a8a] px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-white">desde 25€</span>
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-white backdrop-blur">Salamanca • Chamartín</span>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/#contacto" class="inline-flex items-center gap-2 rounded-full bg-[#d48a8a] px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-[0_8px_24px_rgba(212,138,138,0.32)] transition hover:bg-[#c27474]">Reservar manicura en Madrid <Icon name="lucide:arrow-right" class="size-4" aria-hidden="true" /></a>
+          <a href="/servicios" class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur transition hover:bg-white/10">Ver todos los servicios</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detalle precio/duración -->
+    <section class="border-b border-black/[0.06] bg-[#fdf6f3] py-8">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+            <p class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-600"><Icon name="lucide:clock" class="size-3.5" aria-hidden="true" /> Duración</p>
+            <p class="mt-2 font-serif text-2xl font-semibold text-[#1a1a1a]">45 min</p>
+            <p class="mt-1 text-sm text-zinc-500">60 min en semipermanente. Confirmamos al reservar para que organices tu día sin prisas.</p>
+          </div>
+          <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+            <p class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-600"><Icon name="lucide:gem" class="size-3.5" aria-hidden="true" /> Precio</p>
+            <p class="mt-2 font-serif text-2xl font-semibold text-[#1a1a1a]">desde 25€</p>
+            <p class="mt-1 text-sm text-zinc-500">Clásica 25€ • Semipermanente desde 32€. Incluye limado, cutículas y asesoría de color.</p>
+          </div>
+          <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+            <p class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-600"><Icon name="lucide:map-pin" class="size-3.5" aria-hidden="true" /> Ubicación</p>
+            <p class="mt-2 font-serif text-lg font-semibold text-[#1a1a1a]">Serrano 42, Salamanca</p>
+            <p class="mt-1 text-sm text-zinc-500">A 5 min de Chamartín, Chamberí y Retiro. Metro Serrano / Rubén Darío. Lun–Sáb 10:00–20:00.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contenido principal 300+ palabras -->
+    <section class="py-16 sm:py-20 lg:py-24">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 gap-10 lg:grid-cols-[1.7fr_1fr] lg:gap-12">
+          <div class="min-w-0">
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-brand-500">Manicura clásica & semipermanente</p>
+            <h2 class="mt-3 font-serif text-3xl font-bold leading-tight tracking-tight text-[#1a1a1a] sm:text-4xl">
+              Manicura en Salamanca y Chamartín — elegancia natural que dura semanas
+            </h2>
+            <div class="prose prose-zinc mt-6 max-w-none prose-p:leading-relaxed prose-p:text-zinc-600 prose-strong:text-zinc-800 prose-a:text-brand-600 hover:prose-a:text-brand-700 prose-a:underline-offset-4 prose-headings:font-serif prose-headings:tracking-tight">
+              <p>
+                En <strong>Luxe Nail Studio, Serrano 42 (Salamanca)</strong>, nuestra <strong>manicura en Madrid</strong> es el ritual más solicitado por clientas que buscan un acabado natural, pulido y duradero sin artificios. Trabajamos a minutos de <strong>Chamartín, Chamberí, Retiro y el centro de Madrid</strong>, con acceso directo desde la Castellana, Nuevos Ministerios y AZCA, por lo que puedes venir en tu pausa de comida o al salir de la oficina y volver con manos impecables en menos de una hora.
+              </p>
+              <p>
+                Cada manicura empieza con un diagnóstico gratuito: analizamos la forma natural de tu uña, la cutícula y tu estilo diario para recomendar longitud, forma — almendra suave, cuadrada pulida u ovalada — y tono. Usamos limas de grano fino, empujadores esterilizados en autoclave medical-grade y productos <strong>veganos, cruelty-free e hipoalergénicos</strong> dermatológicamente testados. La preparación de la cutícula es precisa y respetuosa: retiramos solo lo necesario, hidratamos y sellamos para un contorno nítido sin dañar la matriz.
+              </p>
+              <p>
+                El esmaltado es nuestra firma. Aplicamos base fortalecedora con queratina, dos capas finas de color — desde nudes atemporales y rosas empolvados hasta rojos intensos y franceses modernos — y top coat de alto brillo que sella durante semanas. Si eliges <strong>semipermanente</strong>, curamos en lámpara LED de última generación con calor controlado, sin sensación de quemazón, logrando un brillo espejo que resiste 2 a 3 semanas sin descascarillados ni pérdida de brillo. Ideal si trabajas con las manos, viajas o simplemente quieres olvidarte del retoque diario.
+              </p>
+              <h3 class="text-xl font-semibold text-[#1a1a1a]">¿Por qué nuestra manicura en Madrid es diferente?</h3>
+              <ul class="list-disc pl-6">
+                <li><strong>Higiene impecable:</strong> instrumental esterilizado por cliente, limas desechables y protocolos como en clínica. Tu seguridad es no negociable.</li>
+                <li><strong>Duración real:</strong> 45 min para clásica, 60 min para semipermanente. Precio transparente desde 25€, con confirmación instantánea al reservar.</li>
+                <li><strong>Asesoría de estilo:</strong> te proponemos colores según tu tono de piel, armario y ocasión — boda, entrevista, evento — para que tus manos comuniquen lo que tú quieres.</li>
+                <li><strong>Acabado luxe:</strong> cutículas perfectas, laterales pulidos y brillo que no se apaga. Fotogénico desde el primer minuto y cómodo para el día a día.</li>
+              </ul>
+              <p>
+                Atendemos a clientas de todo Madrid centro que valoran el detalle y el trato cercano. Nuestro estudio boutique en Serrano 42 combina música suave, aromas relajantes y luz cálida para que tu cita sea un ritual de desconexión, no una carrera. Sales con manos cuidadas, hidratadas y un color que te hace sentir segura. Y si te apetece elevar el diseño, puedes añadir <a href="/servicios/nail-art-madrid">nail art minimalista en Madrid</a> sin alargar demasiado la cita, o complementar con <a href="/servicios/pedicura-madrid">pedicura spa en Madrid</a> para un bienestar completo. Para longitud extra y resistencia, descubre también nuestras <a href="/servicios/unas-gel-madrid">uñas de gel en Madrid</a> esculpidas a medida.
+              </p>
+              <p>
+                Reserva tu <strong>manicura en Madrid</strong> hoy y notas la diferencia desde el primer gesto. Estamos en <strong>Serrano 42, Salamanca</strong>, abiertos Lun–Sáb 10:00–20:00, con última cita una hora antes del cierre. ¿Vienes desde Chamartín? Estamos a 5 minutos en metro o 8 en coche según tráfico. ¿Desde Chamberí o Retiro? Llegas paseando. Pregunta por nuestro bono mensual y por el retoque express si ya llevas semipermanente. Tu manicura, a tu ritmo, en el salón de referencia en Madrid.
+              </p>
+            </div>
+
+            <h3 class="mt-10 font-serif text-xl font-semibold tracking-tight text-[#1a1a1a]">Cómo es tu cita paso a paso</h3>
+            <ol class="mt-4 space-y-3">
+              <li class="flex gap-3"><span class="flex size-7 shrink-0 items-center justify-center rounded-full bg-black text-xs font-bold text-white">1</span><span class="text-sm leading-relaxed text-zinc-600"><strong class="text-zinc-800">Diagnóstico y diseño (5 min):</strong> forma, largo y color según tu estilo y rutina.</span></li>
+              <li class="flex gap-3"><span class="flex size-7 shrink-0 items-center justify-center rounded-full bg-black text-xs font-bold text-white">2</span><span class="text-sm leading-relaxed text-zinc-600"><strong class="text-zinc-800">Preparación (15 min):</strong> limado, cutículas, pulido suave e hidratación.</span></li>
+              <li class="flex gap-3"><span class="flex size-7 shrink-0 items-center justify-center rounded-full bg-black text-xs font-bold text-white">3</span><span class="text-sm leading-relaxed text-zinc-600"><strong class="text-zinc-800">Esmaltado (15–20 min):</strong> base, dos capas finas y top coat — o curado LED en semipermanente.</span></li>
+              <li class="flex gap-3"><span class="flex size-7 shrink-0 items-center justify-center rounded-full bg-black text-xs font-bold text-white">4</span><span class="text-sm leading-relaxed text-zinc-600"><strong class="text-zinc-800">Sellado y cuidado (5 min):</strong> aceite de cutículas, crema y foto final para tu recuerdo.</span></li>
+            </ol>
+
+            <div class="mt-10 flex flex-wrap gap-3">
+              <a href="/#contacto" class="inline-flex items-center gap-2 rounded-full bg-[#d48a8a] px-7 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white shadow transition hover:bg-[#c27474]">Reservar manicura en Madrid — desde 25€</a>
+              <a href="/servicios" class="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-7 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#1a1a1a] transition hover:border-brand-300/40 hover:text-brand-600">Ver todos los servicios</a>
+            </div>
+
+            <p class="mt-6 text-xs leading-relaxed text-zinc-400">
+              También te puede interesar: <a href="/servicios/unas-gel-madrid" class="font-medium text-brand-600 hover:underline">uñas de gel en Madrid</a> • <a href="/servicios/nail-art-madrid" class="font-medium text-brand-600 hover:underline">nail art en Madrid</a> • <a href="/servicios/pedicura-madrid" class="font-medium text-brand-600 hover:underline">pedicura en Madrid</a> • <a href="/servicios" class="font-medium text-brand-600 hover:underline">todos los servicios</a> • <a href="/#galeria" class="font-medium text-brand-600 hover:underline">galería</a> • <a href="/#nosotros" class="font-medium text-brand-600 hover:underline">sobre nosotras</a>
+            </p>
+          </div>
+
+          <!-- Sidebar -->
+          <aside class="space-y-6">
+            <div class="overflow-hidden rounded-[20px] border border-black/5 bg-white shadow-sm">
+              <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=800&auto=format&fit=crop" alt="Detalle manicura en Madrid — cutículas perfectas y brillo espejo" class="aspect-[4/3] w-full object-cover" loading="lazy" decoding="async" />
+              <div class="p-6">
+                <h3 class="font-serif text-base font-semibold text-[#1a1a1a]">Tu manicura, tu estilo</h3>
+                <p class="mt-2 text-sm leading-relaxed text-zinc-500">Nudes, rosas empolvados, rojos clásicos o francés moderno. Te asesoramos para que el color potencie tu tono de piel y tu armario cápsula.</p>
+                <a href="/#contacto" class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0a0a0a] px-5 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:bg-[#3d2222]">Reservar ahora</a>
+                <p class="mt-3 text-center text-xs text-zinc-400">Respuesta en horario Lun–Sáb 10:00–20:00</p>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-brand-200/40 bg-[#fdf6f3] p-6">
+              <h3 class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-700">¿Qué incluye?</h3>
+              <ul class="mt-3 space-y-2 text-sm leading-relaxed text-zinc-600">
+                <li class="flex gap-2"><span class="text-brand-400">•</span> Diagnóstico y asesoría de color gratuita</li>
+                <li class="flex gap-2"><span class="text-brand-400">•</span> Limado, cutículas y pulido respetuoso</li>
+                <li class="flex gap-2"><span class="text-brand-400">•</span> Base fortalecedora + 2 capas + top coat</li>
+                <li class="flex gap-2"><span class="text-brand-400">•</span> Aceite de cutículas y crema hidratante</li>
+                <li class="flex gap-2"><span class="text-brand-400">•</span> Garantía 5 días por descascarillados</li>
+              </ul>
+            </div>
+
+            <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+              <h3 class="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-800">Otros servicios en Madrid</h3>
+              <ul class="mt-4 space-y-3">
+                <li><a href="/servicios/unas-gel-madrid" class="flex items-center justify-between rounded-xl border border-black/5 bg-[#fdf6f3] px-4 py-3 text-sm font-medium text-[#1a1a1a] transition hover:border-brand-200 hover:text-brand-700"><span>Uñas de Gel en Madrid</span><span class="text-xs text-zinc-400">desde 45€</span></a></li>
+                <li><a href="/servicios/nail-art-madrid" class="flex items-center justify-between rounded-xl border border-black/5 bg-white px-4 py-3 text-sm font-medium text-[#1a1a1a] transition hover:border-brand-200 hover:text-brand-700"><span>Nail Art en Madrid</span><span class="text-xs text-zinc-400">desde 30€</span></a></li>
+                <li><a href="/servicios/pedicura-madrid" class="flex items-center justify-between rounded-xl border border-black/5 bg-white px-4 py-3 text-sm font-medium text-[#1a1a1a] transition hover:border-brand-200 hover:text-brand-700"><span>Pedicura en Madrid</span><span class="text-xs text-zinc-400">desde 35€</span></a></li>
+                <li><a href="/servicios" class="flex items-center justify-center rounded-xl bg-black px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#3d2222]">Ver todos →</a></li>
+              </ul>
+            </div>
+
+            <div class="rounded-2xl bg-black p-6 text-white">
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-300">Salamanca • Chamartín • Centro</p>
+              <h3 class="mt-2 font-serif text-lg font-semibold">¿Vienes desde Chamartín?</h3>
+              <p class="mt-2 text-sm leading-relaxed text-white/70">Estamos a 5 min en metro (Serrano / Rubén Darío) o 8 min en coche. Ideal para tu pausa de mediodía o después del trabajo.</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Calle+Serrano+42+Madrid" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-300 hover:text-white hover:underline underline-offset-4">Cómo llegar a Serrano 42 <Icon name="lucide:arrow-right" class="size-3.5" aria-hidden="true" /></a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ mini -->
+    <section class="border-t border-black/[0.06] bg-[#fdf6f3] py-12 sm:py-16">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl">
+          <h2 class="font-serif text-2xl font-bold tracking-tight text-[#1a1a1a] sm:text-3xl">Preguntas sobre manicura en Madrid</h2>
+          <div class="mt-8 space-y-6">
+            <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+              <h3 class="font-semibold text-[#1a1a1a]">¿Cuánto cuesta y cuánto dura?</h3>
+              <p class="mt-2 text-sm leading-relaxed text-zinc-600">Clásica desde 25€ en 45 min, semipermanente desde 32€ en 60 min en Serrano 42, Salamanca. La semipermanente dura 2–3 semanas con brillo intacto.</p>
+            </div>
+            <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+              <h3 class="font-semibold text-[#1a1a1a]">¿Productos seguros para piel sensible?</h3>
+              <p class="mt-2 text-sm leading-relaxed text-zinc-600">Sí, usamos marcas premium veganas, cruelty-free e hipoalergénicas, dermatológicamente testadas. Limas desechables y esterilización medical-grade por cliente.</p>
+            </div>
+            <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+              <h3 class="font-semibold text-[#1a1a1a]">¿Dónde reservo?</h3>
+              <p class="mt-2 text-sm leading-relaxed text-zinc-600">En <a href="/#contacto" class="font-semibold text-brand-600 hover:underline">/#contacto</a> reservas online en 30 segundos con confirmación instantánea, o por WhatsApp al +34 910 123 456. Estamos en Calle Serrano 42, 28001 Madrid, a minutos de Chamartín.</p>
+            </div>
+          </div>
+          <div class="mt-8 text-center">
+            <a href="/#contacto" class="inline-flex items-center gap-2 rounded-full bg-[#d48a8a] px-7 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white shadow transition hover:bg-[#c27474]">Reservar manicura en Madrid</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

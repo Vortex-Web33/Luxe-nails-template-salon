@@ -1,0 +1,250 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/sections/Header.astro';
+import Footer from '@/components/sections/Footer.astro';
+import { SITE } from '@/config/site';
+import { Icon } from 'astro-icon/components';
+
+const canonical = `${SITE.url}/servicios/nail-art-madrid/`;
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: SITE.url },
+    { '@type': 'ListItem', position: 2, name: 'Servicios', item: `${SITE.url}/servicios/` },
+    { '@type': 'ListItem', position: 3, name: 'Nail Art en Madrid', item: canonical },
+  ],
+};
+
+const serviceLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Nail Art en Madrid — Diseños Exclusivos Personalizados',
+  description: 'Nail art en Madrid 100% personalizado en Luxe Nail Studio, Serrano 42, Salamanca. Desde minimalista hasta alta joyería, desde 30€, 60–120 min según diseño, con técnicas tendencia y productos premium. Reserva online.',
+  provider: {
+    '@type': 'NailSalon',
+    name: SITE.name,
+    url: SITE.url,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Calle Serrano 42',
+      addressLocality: 'Madrid',
+      postalCode: '28001',
+      addressRegion: 'Madrid',
+      addressCountry: 'ES',
+    },
+    telephone: SITE.contact.phone,
+  },
+  areaServed: { '@type': 'City', name: 'Madrid', addressCountry: 'ES' },
+  serviceType: 'Nail Art',
+  url: canonical,
+  image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=1200&auto=format&fit=crop',
+  offers: {
+    '@type': 'Offer',
+    price: '30',
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/InStock',
+    url: canonical,
+    priceValidUntil: '2027-12-31',
+    description: 'Nail art personalizado desde 30€, 60–120 min según complejidad',
+  },
+};
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: '¿Cuánto cuesta el nail art en Madrid?', acceptedAnswer: { '@type': 'Answer', text: 'Desde 30€ sobre manicura base, según diseño: minimalista 30–40€, francés moderno/cromado 35–50€, joya con piedras 50€+. Te damos presupuesto cerrado antes de empezar en Serrano 42.' } },
+    { '@type': 'Question', name: '¿Cuánto tarda un diseño de nail art?', acceptedAnswer: { '@type': 'Answer', text: 'De 60 a 120 min en total (incluye manicura base). Un acento minimalista suma 15 min; un set completo joya puede llegar a 120 min. Confirmamos duración al reservar.' } },
+    { '@type': 'Question', name: '¿Dónde hacerme nail art en Salamanca, Madrid?', acceptedAnswer: { '@type': 'Answer', text: 'En Luxe Nail Studio, Calle Serrano 42, 28001 Madrid, barrio de Salamanca. Metro Serrano / Rubén Darío, a 5 min de Chamartín y centro. Lun–Sáb 10:00–20:00.' } },
+  ],
+};
+
+const jsonLd = [breadcrumbLd, serviceLd, faqLd];
+---
+
+<Layout
+  title="Nail Art en Madrid | Diseños Exclusivos Personalizados Salamanca | Luxe Nail Studio"
+  description="Nail art en Madrid 100% personalizado — minimalista, francés moderno, cromados y joya desde 30€, 60–120 min en Serrano 42, Salamanca, a minutos de Chamartín. Técnicas tendencia y productos premium. Reserva en 30 segundos."
+  canonical={canonical}
+  jsonLd={jsonLd}
+>
+  <Header />
+
+  <main id="main" class="bg-white">
+    <section class="relative overflow-hidden bg-black pb-16 pt-28 sm:pb-20 sm:pt-32 lg:pt-36">
+      <div class="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=2000&auto=format&fit=crop" alt="Nail art en Madrid — diseño exclusivo minimalista en tonos nude Luxe Studio" class="h-full w-full object-cover opacity-30" loading="eager" decoding="async" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20"></div>
+      </div>
+      <div class="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <nav aria-label="Miga de pan" class="text-xs tracking-wide text-white/60">
+          <ol class="flex flex-wrap items-center gap-2">
+            <li><a href="/" class="hover:text-white hover:underline underline-offset-4">Inicio</a></li>
+            <li aria-hidden="true">/</li>
+            <li><a href="/servicios" class="hover:text-white hover:underline underline-offset-4">Servicios</a></li>
+            <li aria-hidden="true">/</li>
+            <li aria-current="page" class="text-white font-medium">Nail Art en Madrid</li>
+          </ol>
+        </nav>
+        <p class="mt-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80 backdrop-blur">Serrano 42, Salamanca • Diseño a medida • Madrid centro</p>
+        <h1 class="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-[0.95] tracking-tight text-white sm:text-5xl lg:text-[3.6rem]">
+          Nail Art en Madrid
+        </h1>
+        <p class="mt-4 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">
+          De lo minimalista a la alta joyería en tus uñas. Diseños 100% personalizados, creados a mano alzada por nuestras nail artists, con técnicas tendencia y acabados que no se borran.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <span class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-[#1a1a1a]"><Icon name="lucide:clock" class="size-3.5" aria-hidden="true" /> 60–120 min</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-[#d48a8a] px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-white">desde 30€</span>
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-white backdrop-blur">Salamanca • Chamartín</span>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/#contacto" class="inline-flex items-center gap-2 rounded-full bg-[#d48a8a] px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-[0_8px_24px_rgba(212,138,138,0.32)] transition hover:bg-[#c27474]">Reservar nail art en Madrid <Icon name="lucide:arrow-right" class="size-4" aria-hidden="true" /></a>
+          <a href="/servicios" class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur transition hover:bg-white/10">Ver todos los servicios</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-black/[0.06] bg-[#fdf6f3] py-8">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+            <p class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-600"><Icon name="lucide:clock" class="size-3.5" aria-hidden="true" /> Duración</p>
+            <p class="mt-2 font-serif text-2xl font-semibold text-[#1a1a1a]">60–120 min</p>
+            <p class="mt-1 text-sm text-zinc-500">Incluye manicura base. Según complejidad del diseño.</p>
+          </div>
+          <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+            <p class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-600"><Icon name="lucide:gem" class="size-3.5" aria-hidden="true" /> Precio</p>
+            <p class="mt-2 font-serif text-2xl font-semibold text-[#1a1a1a]">desde 30€</p>
+            <p class="mt-1 text-sm text-zinc-500">Sobre manicura base. Presupuesto cerrado antes de empezar.</p>
+          </div>
+          <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+            <p class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-600"><Icon name="lucide:map-pin" class="size-3.5" aria-hidden="true" /> Ubicación</p>
+            <p class="mt-2 font-serif text-lg font-semibold text-[#1a1a1a]">Serrano 42, Salamanca</p>
+            <p class="mt-1 text-sm text-zinc-500">A 5 min de Chamartín, Chamberí y Retiro. Metro Serrano.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 sm:py-20 lg:py-24">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 gap-10 lg:grid-cols-[1.7fr_1fr] lg:gap-12">
+          <div class="min-w-0">
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-brand-500">Diseño 100% personalizado</p>
+            <h2 class="mt-3 font-serif text-3xl font-bold leading-tight tracking-tight text-[#1a1a1a] sm:text-4xl">
+              Nail art en Salamanca y Chamartín — tu estilo, en miniatura
+            </h2>
+            <div class="prose prose-zinc mt-6 max-w-none prose-p:leading-relaxed prose-p:text-zinc-600 prose-strong:text-zinc-800 prose-a:text-brand-600 hover:prose-a:text-brand-700 prose-a:underline-offset-4 prose-headings:font-serif">
+              <p>
+                En <strong>Luxe Nail Studio, Serrano 42 (Salamanca)</strong>, el <strong>nail art en Madrid</strong> no es un extra: es una disciplina artesanal. Atendemos a clientas de <strong>Chamartín, Salamanca, Chamberí, Retiro y todo Madrid centro</strong> que quieren que sus manos hablen por ellas — desde un micro-punto minimalista que eleva un nude hasta una composición joya con piedras, foil y cromados que convierte cada uña en una pequeña obra de arte. Todo se diseña a medida, tras escucharte.
+              </p>
+              <p>
+                Nuestras artistas trabajan a mano alzada con pinceles ultrafinos, pigmentos de alta densidad y geles de construcción que no se levantan. Dominamos técnicas tendencia en Madrid: <strong>francés moderno</strong> — diagonal, doble línea, baby boomer difuminado — <strong>cromados perla y espejo</strong>, <strong>cat eye magnético</strong>, <strong>mármol suave</strong>, <strong>flores press</strong> y <strong>micro-joya</strong> con cristales colocados uno a uno. Cada diseño se sella con top coat flexible que protege sin grosor, manteniendo el brillo y la definición durante semanas. Usamos productos <strong>veganos, hipoalergénicos y de alta pigmentación</strong> para trazos nítidos que no se borran con el uso diario.
+              </p>
+              <p>
+                La cita empieza con moodboard: traes referencia de Instagram o Pinterest, o te proponemos opciones según tu tono de piel, tu trabajo y tu evento — boda, bautizo, entrevista, festival. Si llevas <a href="/servicios/unas-gel-madrid">uñas de gel en Madrid</a>, el nail art se esculpe sobre la extensión sin añadir peso; si prefieres base natural, lo aplicamos sobre tu <a href="/servicios/manicura-madrid">manicura en Madrid</a> clásica o semipermanente. El tiempo varía con la complejidad: un acento minimalista en dos uñas puede ser 60 min en total; un set completo con degradados y piedras llega a 90–120 min. Siempre te damos presupuesto y duración cerrados antes de empezar, desde 30€ sobre la manicura base, para que decidas sin sorpresas.
+              </p>
+              <h3 class="text-xl font-semibold text-[#1a1a1a]">Colecciones más pedidas en Madrid</h3>
+              <ul class="list-disc pl-6">
+                <li><strong>Minimal Luxe:</strong> puntos, líneas finas, medias lunas y micro-corazones en nude–blanco. Ideal para oficina y diario.</li>
+                <li><strong>Francés reinventado:</strong> baby boomer, french color, doble filo o con glitter sutil. Elegancia con giro.</li>
+                <li><strong>Cromados & Cat Eye:</strong> perla, dorado champagne, plateado espejo y efecto ojo de gato magnético. Luz en cada gesto.</li>
+                <li><strong>Joya:</strong> cristales, perlas, foil dorado y relieves 3D para eventos y novias. Máximo impacto, colocación precisa.</li>
+              </ul>
+              <p>
+                Nuestro estudio boutique en Serrano 42 es un atelier tranquilo: luz cálida, música suave y tiempo para perfeccionar cada trazo sin prisas. Muchas clientas aprovechan para combinar el diseño con <a href="/servicios/pedicura-madrid">pedicura en Madrid</a> coordinada — mismo tono o contraste pensado — y salir con look completo. La higiene es idéntica a nuestros otros servicios: esterilización medical-grade, limas desechables y desinfección entre capas. Y como todo queda sellado, tu nail art resiste 2–3 semanas con brillo intacto, sin miedo a que se borre al lavarte las manos. Reserva tu <strong>nail art en Madrid</strong> hoy en <strong>Calle Serrano 42, 28001</strong>, Lun–Sáb 10:00–20:00, a 5 min de Chamartín y a un paseo de Velázquez y Goya. Envíanos tu inspiración por WhatsApp y te proponemos boceto y precio en minutos.
+              </p>
+            </div>
+
+            <h3 class="mt-10 font-serif text-xl font-semibold tracking-tight text-[#1a1a1a]">Cómo creamos tu diseño</h3>
+            <ol class="mt-4 space-y-3">
+              <li class="flex gap-3"><span class="flex size-7 shrink-0 items-center justify-center rounded-full bg-black text-xs font-bold text-white">1</span><span class="text-sm leading-relaxed text-zinc-600"><strong class="text-zinc-800">Moodboard (10 min):</strong> inspiración, tono de piel y ocasión. Boceto rápido.</span></li>
+              <li class="flex gap-3"><span class="flex size-7 shrink-0 items-center justify-center rounded-full bg-black text-xs font-bold text-white">2</span><span class="text-sm leading-relaxed text-zinc-600"><strong class="text-zinc-800">Base (30–40 min):</strong> manicura clásica o gel, forma y color base.</span></li>
+              <li class="flex gap-3"><span class="flex size-7 shrink-0 items-center justify-center rounded-full bg-black text-xs font-bold text-white">3</span><span class="text-sm leading-relaxed text-zinc-600"><strong class="text-zinc-800">Diseño (20–60 min):</strong> trazo a mano alzada, pigmentos, piedras o cromado y sellado.</span></li>
+              <li class="flex gap-3"><span class="flex size-7 shrink-0 items-center justify-center rounded-full bg-black text-xs font-bold text-white">4</span><span class="text-sm leading-relaxed text-zinc-600"><strong class="text-zinc-800">Top & foto (5 min):</strong> brillo o mate, aceite y foto para tu colección.</span></li>
+            </ol>
+
+            <div class="mt-10 flex flex-wrap gap-3">
+              <a href="/#contacto" class="inline-flex items-center gap-2 rounded-full bg-[#d48a8a] px-7 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white shadow transition hover:bg-[#c27474]">Reservar nail art en Madrid — desde 30€</a>
+              <a href="/servicios" class="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-7 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#1a1a1a] transition hover:border-brand-300/40 hover:text-brand-600">Ver todos los servicios</a>
+            </div>
+
+            <p class="mt-6 text-xs leading-relaxed text-zinc-400">
+              También te puede interesar: <a href="/servicios/manicura-madrid" class="font-medium text-brand-600 hover:underline">manicura en Madrid</a> • <a href="/servicios/unas-gel-madrid" class="font-medium text-brand-600 hover:underline">uñas de gel en Madrid</a> • <a href="/servicios/pedicura-madrid" class="font-medium text-brand-600 hover:underline">pedicura en Madrid</a> • <a href="/servicios" class="font-medium text-brand-600 hover:underline">todos los servicios</a> • <a href="/#galeria" class="font-medium text-brand-600 hover:underline">galería</a>
+            </p>
+          </div>
+
+          <aside class="space-y-6">
+            <div class="overflow-hidden rounded-[20px] border border-black/5 bg-white shadow-sm">
+              <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=800&auto=format&fit=crop" alt="Nail art en Madrid — detalle de diseño joya con cristales y francés moderno" class="aspect-[4/3] w-full object-cover" loading="lazy" decoding="async" />
+              <div class="p-6">
+                <h3 class="font-serif text-base font-semibold text-[#1a1a1a]">Tu inspiración, nuestra mano</h3>
+                <p class="mt-2 text-sm leading-relaxed text-zinc-500">Envíanos tu referencia por WhatsApp y te proponemos boceto, duración y precio cerrado en minutos. Sin sorpresas en cabina.</p>
+                <a href="/#contacto" class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0a0a0a] px-5 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:bg-[#3d2222]">Reservar ahora</a>
+                <p class="mt-3 text-center text-xs text-zinc-400">Presupuesto cerrado antes de empezar</p>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-brand-200/40 bg-[#fdf6f3] p-6">
+              <h3 class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-700">¿Qué incluye?</h3>
+              <ul class="mt-3 space-y-2 text-sm leading-relaxed text-zinc-600">
+                <li class="flex gap-2"><span class="text-brand-400">•</span> Diagnóstico y boceto personalizado</li>
+                <li class="flex gap-2"><span class="text-brand-400">•</span> Manicura base + forma incluida</li>
+                <li class="flex gap-2"><span class="text-brand-400">•</span> Diseño a mano alzada con pigmentos premium</li>
+                <li class="flex gap-2"><span class="text-brand-400">•</span> Piedras / cromados / foil según elección</li>
+                <li class="flex gap-2"><span class="text-brand-400">•</span> Sellado flexible y aceite de cutículas</li>
+              </ul>
+            </div>
+
+            <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+              <h3 class="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-800">Otros servicios en Madrid</h3>
+              <ul class="mt-4 space-y-3">
+                <li><a href="/servicios/manicura-madrid" class="flex items-center justify-between rounded-xl border border-black/5 bg-[#fdf6f3] px-4 py-3 text-sm font-medium text-[#1a1a1a] transition hover:border-brand-200 hover:text-brand-700"><span>Manicura en Madrid</span><span class="text-xs text-zinc-400">desde 25€</span></a></li>
+                <li><a href="/servicios/unas-gel-madrid" class="flex items-center justify-between rounded-xl border border-black/5 bg-white px-4 py-3 text-sm font-medium text-[#1a1a1a] transition hover:border-brand-200 hover:text-brand-700"><span>Uñas de Gel en Madrid</span><span class="text-xs text-zinc-400">desde 45€</span></a></li>
+                <li><a href="/servicios/pedicura-madrid" class="flex items-center justify-between rounded-xl border border-black/5 bg-white px-4 py-3 text-sm font-medium text-[#1a1a1a] transition hover:border-brand-200 hover:text-brand-700"><span>Pedicura en Madrid</span><span class="text-xs text-zinc-400">desde 35€</span></a></li>
+                <li><a href="/servicios" class="flex items-center justify-center rounded-xl bg-black px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#3d2222]">Ver todos →</a></li>
+              </ul>
+            </div>
+
+            <div class="rounded-2xl bg-black p-6 text-white">
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-300">Salamanca • Chamartín • Centro</p>
+              <h3 class="mt-2 font-serif text-lg font-semibold">¿Boda o evento en Madrid?</h3>
+              <p class="mt-2 text-sm leading-relaxed text-white/70">Creamos sets coordinados para novia, damas e invitadas. Prueba previa y diseño a juego con tu vestido.</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Calle+Serrano+42+Madrid" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-300 hover:text-white hover:underline underline-offset-4">Cómo llegar a Serrano 42 <Icon name="lucide:arrow-right" class="size-3.5" aria-hidden="true" /></a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-black/[0.06] bg-[#fdf6f3] py-12 sm:py-16">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl">
+          <h2 class="font-serif text-2xl font-bold tracking-tight text-[#1a1a1a] sm:text-3xl">Preguntas sobre nail art en Madrid</h2>
+          <div class="mt-8 space-y-6">
+            <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+              <h3 class="font-semibold text-[#1a1a1a]">¿Cuánto cuesta y cuánto dura?</h3>
+              <p class="mt-2 text-sm leading-relaxed text-zinc-600">Desde 30€ sobre manicura base, 60–120 min según diseño. El nail art dura 2–3 semanas sellado, con brillo intacto.</p>
+            </div>
+            <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+              <h3 class="font-semibold text-[#1a1a1a]">¿Puedo combinar nail art con gel?</h3>
+              <p class="mt-2 text-sm leading-relaxed text-zinc-600">Sí, queda perfecto sobre <a href="/servicios/unas-gel-madrid" class="font-semibold text-brand-600 hover:underline">uñas de gel en Madrid</a>. El diseño no añade peso y se sella igual de resistente.</p>
+            </div>
+            <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+              <h3 class="font-semibold text-[#1a1a1a]">¿Dónde reservo?</h3>
+              <p class="mt-2 text-sm leading-relaxed text-zinc-600">En <a href="/#contacto" class="font-semibold text-brand-600 hover:underline">/#contacto</a> reservas online en 30 segundos, o por WhatsApp. Estamos en Calle Serrano 42, 28001 Madrid, a minutos de Chamartín.</p>
+            </div>
+          </div>
+          <div class="mt-8 text-center">
+            <a href="/#contacto" class="inline-flex items-center gap-2 rounded-full bg-[#d48a8a] px-7 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white shadow transition hover:bg-[#c27474]">Reservar nail art en Madrid</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

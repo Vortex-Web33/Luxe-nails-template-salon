@@ -1,0 +1,250 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/sections/Header.astro';
+import Footer from '@/components/sections/Footer.astro';
+import { SITE } from '@/config/site';
+import { Icon } from 'astro-icon/components';
+
+const canonical = `${SITE.url}/servicios/unas-gel-madrid/`;
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: SITE.url },
+    { '@type': 'ListItem', position: 2, name: 'Servicios', item: `${SITE.url}/servicios/` },
+    { '@type': 'ListItem', position: 3, name: 'Uñas de Gel en Madrid', item: canonical },
+  ],
+};
+
+const serviceLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Uñas de Gel en Madrid — Extensiones Esculpidas',
+  description: 'Uñas de gel en Madrid esculpidas a medida en Luxe Nail Studio, Serrano 42, Salamanca. Extensiones ultraligeras y resistentes desde 45€, 90–120 min, con forma personalizada y brillo espejo 3–4 semanas. Reserva online.',
+  provider: {
+    '@type': 'NailSalon',
+    name: SITE.name,
+    url: SITE.url,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Calle Serrano 42',
+      addressLocality: 'Madrid',
+      postalCode: '28001',
+      addressRegion: 'Madrid',
+      addressCountry: 'ES',
+    },
+    telephone: SITE.contact.phone,
+  },
+  areaServed: { '@type': 'City', name: 'Madrid', addressCountry: 'ES' },
+  serviceType: 'Uñas de Gel',
+  url: canonical,
+  image: 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1200&auto=format&fit=crop',
+  offers: {
+    '@type': 'Offer',
+    price: '45',
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/InStock',
+    url: canonical,
+    priceValidUntil: '2027-12-31',
+    description: 'Extensiones de gel esculpidas 90–120 min desde 45€ — incluye forma y acabado premium',
+  },
+};
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: '¿Cuánto duran las uñas de gel en Madrid?', acceptedAnswer: { '@type': 'Answer', text: 'De 3 a 4 semanas impecables con nuestro gel premium y sellado. Recomendamos retoque cada 2–3 semanas para mantener forma y brillo.' } },
+    { '@type': 'Question', name: '¿Las uñas de gel dañan la uña natural?', acceptedAnswer: { '@type': 'Answer', text: 'No, si se aplican y retiran correctamente. Usamos preparación respetuosa, base protectora y retirada con limado suave y sin arrancados, cuidando la uña natural.' } },
+    { '@type': 'Question', name: '¿Cuánto cuesta hacer uñas de gel en Salamanca, Madrid?', acceptedAnswer: { '@type': 'Answer', text: 'Desde 45€ en Luxe Nail Studio, Serrano 42, Salamanca, 90–120 min según largo y diseño. Asesoría de forma y color incluida.' } },
+  ],
+};
+
+const jsonLd = [breadcrumbLd, serviceLd, faqLd];
+---
+
+<Layout
+  title="Uñas de Gel en Madrid | Extensiones Esculpidas Salamanca | Luxe Nail Studio"
+  description="Uñas de gel en Madrid — extensiones esculpidas ultraligeras desde 45€, 90–120 min en Serrano 42, Salamanca, a minutos de Chamartín. Forma almendra, cuadrada o stiletto, brillo 3–4 semanas. Reserva en 30 segundos."
+  canonical={canonical}
+  jsonLd={jsonLd}
+>
+  <Header />
+
+  <main id="main" class="bg-white">
+    <section class="relative overflow-hidden bg-black pb-16 pt-28 sm:pb-20 sm:pt-32 lg:pt-36">
+      <div class="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=2000&auto=format&fit=crop" alt="Uñas de gel en Madrid — extensiones esculpidas con acabado natural Luxe Salamanca" class="h-full w-full object-cover opacity-30" loading="eager" decoding="async" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20"></div>
+      </div>
+      <div class="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <nav aria-label="Miga de pan" class="text-xs tracking-wide text-white/60">
+          <ol class="flex flex-wrap items-center gap-2">
+            <li><a href="/" class="hover:text-white hover:underline underline-offset-4">Inicio</a></li>
+            <li aria-hidden="true">/</li>
+            <li><a href="/servicios" class="hover:text-white hover:underline underline-offset-4">Servicios</a></li>
+            <li aria-hidden="true">/</li>
+            <li aria-current="page" class="text-white font-medium">Uñas de Gel en Madrid</li>
+          </ol>
+        </nav>
+        <p class="mt-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80 backdrop-blur">Serrano 42, Salamanca • Gel premium • Madrid centro</p>
+        <h1 class="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-[0.95] tracking-tight text-white sm:text-5xl lg:text-[3.6rem]">
+          Uñas de Gel en Madrid
+        </h1>
+        <p class="mt-4 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">
+          Extensiones de gel esculpidas a medida, ultraligeras y resistentes. Longitud y forma personalizadas — almendra, cuadrada, stiletto — con acabado natural y brillo espejo que dura semanas.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <span class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-[#1a1a1a]"><Icon name="lucide:clock" class="size-3.5" aria-hidden="true" /> 90–120 min</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-[#d48a8a] px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-white">desde 45€</span>
+          <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-white backdrop-blur">Salamanca • Chamartín</span>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/#contacto" class="inline-flex items-center gap-2 rounded-full bg-[#d48a8a] px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-[0_8px_24px_rgba(212,138,138,0.32)] transition hover:bg-[#c27474]">Reservar uñas de gel en Madrid <Icon name="lucide:arrow-right" class="size-4" aria-hidden="true" /></a>
+          <a href="/servicios" class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] text-white backdrop-blur transition hover:bg-white/10">Ver todos los servicios</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-b border-black/[0.06] bg-[#fdf6f3] py-8">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+            <p class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-600"><Icon name="lucide:clock" class="size-3.5" aria-hidden="true" /> Duración</p>
+            <p class="mt-2 font-serif text-2xl font-semibold text-[#1a1a1a]">90–120 min</p>
+            <p class="mt-1 text-sm text-zinc-500">Según largo y diseño. Confirmamos tiempo exacto al reservar.</p>
+          </div>
+          <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+            <p class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-600"><Icon name="lucide:gem" class="size-3.5" aria-hidden="true" /> Precio</p>
+            <p class="mt-2 font-serif text-2xl font-semibold text-[#1a1a1a]">desde 45€</p>
+            <p class="mt-1 text-sm text-zinc-500">Incluye esculpido, forma, limado y top coat. Relleno desde 35€.</p>
+          </div>
+          <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+            <p class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-600"><Icon name="lucide:map-pin" class="size-3.5" aria-hidden="true" /> Ubicación</p>
+            <p class="mt-2 font-serif text-lg font-semibold text-[#1a1a1a]">Serrano 42, Salamanca</p>
+            <p class="mt-1 text-sm text-zinc-500">A 5 min de Chamartín, Chamberí y Retiro. Metro Serrano / Rubén Darío.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 sm:py-20 lg:py-24">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 gap-10 lg:grid-cols-[1.7fr_1fr] lg:gap-12">
+          <div class="min-w-0">
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-brand-500">Extensiones esculpidas premium</p>
+            <h2 class="mt-3 font-serif text-3xl font-bold leading-tight tracking-tight text-[#1a1a1a] sm:text-4xl">
+              Uñas de gel en Salamanca — a minutos de Chamartín, para manos impecables 3–4 semanas
+            </h2>
+            <div class="prose prose-zinc mt-6 max-w-none prose-p:leading-relaxed prose-p:text-zinc-600 prose-strong:text-zinc-800 prose-a:text-brand-600 hover:prose-a:text-brand-700 prose-a:underline-offset-4 prose-headings:font-serif">
+              <p>
+                Nuestras <strong>uñas de gel en Madrid</strong> en <strong>Luxe Nail Studio, Serrano 42 (Salamanca)</strong> son esculpidas a mano, sin tips postizos, para lograr una estructura equilibrada, ligera y resistente que se funde con tu uña natural. Atendemos a clientas de <strong>Chamartín, Chamberí, Retiro y todo Madrid centro</strong> que buscan longitud elegante sin peso ni incomodidad, con un resultado fotogénico y cómodo para el día a día, el trabajo y los eventos.
+              </p>
+              <p>
+                Empezamos con diagnóstico de la forma de tu mano, la longitud ideal y tu rutina — si tecleas todo el día, practicas deporte o prefieres un largo joya — y elegimos entre <strong>almendra, cuadrada suave, ovalada o stiletto</strong>. Construimos con gel premium autonivelante, curado en lámpara LED con control de temperatura para evitar picos de calor. Cada capa se esculpe y lima con precisión para lograr un apex equilibrado — el punto de fuerza — y laterales rectos que no enganchan. El resultado es una extensión <strong>ultraligera, flexible y resistente a golpes</strong>, con superficie lisa y brillo espejo que no amarillea.
+              </p>
+              <p>
+                La higiene es obsesiva: esterilización medical-grade, limas desechables por cliente y desinfección entre capas. Usamos <strong>geles veganos y hipoalergénicos</strong>, con base protectora que cuida la uña natural y facilita una retirada posterior sin arrancados. El color se sella con dos capas finas y top coat de alto brillo o mate aterciopelado, según tu estilo. Puedes dejarlas en un nude elegante, un milky pulido o añadir <a href="/servicios/nail-art-madrid">nail art en Madrid</a> minimalista — francés moderno, baby boomer, cromados o micro-piedras — sin perder naturalidad. Si solo necesitas mantenimiento, el relleno cada 2–3 semanas devuelve forma y brillo en 60–75 minutos.
+              </p>
+              <h3 class="text-xl font-semibold text-[#1a1a1a]">Ventajas de nuestras uñas de gel en Madrid</h3>
+              <ul class="list-disc pl-6">
+                <li><strong>Ligereza real:</strong> grosor milimétrico, sensación de uña propia, sin peso ni tensión.</li>
+                <li><strong>Duración 3–4 semanas:</strong> sin liftings ni descascarillados si sigues nuestros cuidados — guantes para limpieza, aceite diario de cutículas.</li>
+                <li><strong>Forma a medida:</strong> medimos proporción dedo–uña para que la mano se vea más estilizada y elegante.</li>
+                <li><strong>Retirada segura:</strong> limado suave y sin dañados. Priorizamos la salud de tu uña natural por encima de todo.</li>
+              </ul>
+              <p>
+                En nuestro estudio boutique en Serrano 42 vivirás un ritual tranquilo, con música suave y trato cercano: explicamos cada paso, enseñamos a cuidarlas y te proponemos el tono que mejor potencie tu piel y tu armario. Muchas clientas combinan el servicio con <a href="/servicios/pedicura-madrid">pedicura spa en Madrid</a> en la misma mañana o alternan con <a href="/servicios/manicura-madrid">manicura clásica en Madrid</a> cuando quieren un descanso ligero. Sea cual sea tu elección, sales con manos esculpidas, brillantes y listas para cualquier plan en Madrid — desde una reunión en AZCA hasta una cena en Salamanca. Reserva tus <strong>uñas de gel en Madrid</strong> hoy: estamos en <strong>Calle Serrano 42, 28001</strong>, Lun–Sáb 10:00–20:00, a 5 min de Chamartín y Chamartín y a un paseo de Serrano y Velázquez. ¿Dudas sobre largo o forma? Escríbenos y te asesoramos con fotos reales de trabajos previos.
+              </p>
+            </div>
+
+            <h3 class="mt-10 font-serif text-xl font-semibold tracking-tight text-[#1a1a1a]">Proceso de esculpido</h3>
+            <ol class="mt-4 space-y-3">
+              <li class="flex gap-3"><span class="flex size-7 shrink-0 items-center justify-center rounded-full bg-black text-xs font-bold text-white">1</span><span class="text-sm leading-relaxed text-zinc-600"><strong class="text-zinc-800">Diagnóstico (10 min):</strong> forma de mano, largo ideal y color base.</span></li>
+              <li class="flex gap-3"><span class="flex size-7 shrink-0 items-center justify-center rounded-full bg-black text-xs font-bold text-white">2</span><span class="text-sm leading-relaxed text-zinc-600"><strong class="text-zinc-800">Preparación (15 min):</strong> limado, cutículas y base protectora.</span></li>
+              <li class="flex gap-3"><span class="flex size-7 shrink-0 items-center justify-center rounded-full bg-black text-xs font-bold text-white">3</span><span class="text-sm leading-relaxed text-zinc-600"><strong class="text-zinc-800">Esculpido (50–70 min):</strong> construcción en gel, apex, limado de forma y sellado.</span></li>
+              <li class="flex gap-3"><span class="flex size-7 shrink-0 items-center justify-center rounded-full bg-black text-xs font-bold text-white">4</span><span class="text-sm leading-relaxed text-zinc-600"><strong class="text-zinc-800">Acabado (10 min):</strong> color, top coat, aceite y crema. Foto final.</span></li>
+            </ol>
+
+            <div class="mt-10 flex flex-wrap gap-3">
+              <a href="/#contacto" class="inline-flex items-center gap-2 rounded-full bg-[#d48a8a] px-7 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white shadow transition hover:bg-[#c27474]">Reservar uñas de gel en Madrid — desde 45€</a>
+              <a href="/servicios" class="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-7 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#1a1a1a] transition hover:border-brand-300/40 hover:text-brand-600">Ver todos los servicios</a>
+            </div>
+
+            <p class="mt-6 text-xs leading-relaxed text-zinc-400">
+              También te puede interesar: <a href="/servicios/manicura-madrid" class="font-medium text-brand-600 hover:underline">manicura en Madrid</a> • <a href="/servicios/nail-art-madrid" class="font-medium text-brand-600 hover:underline">nail art en Madrid</a> • <a href="/servicios/pedicura-madrid" class="font-medium text-brand-600 hover:underline">pedicura en Madrid</a> • <a href="/servicios" class="font-medium text-brand-600 hover:underline">todos los servicios</a> • <a href="/#galeria" class="font-medium text-brand-600 hover:underline">galería</a>
+            </p>
+          </div>
+
+          <aside class="space-y-6">
+            <div class="overflow-hidden rounded-[20px] border border-black/5 bg-white shadow-sm">
+              <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=800&auto=format&fit=crop" alt="Uñas de gel en Madrid — forma almendra esculpida con brillo espejo" class="aspect-[4/3] w-full object-cover" loading="lazy" decoding="async" />
+              <div class="p-6">
+                <h3 class="font-serif text-base font-semibold text-[#1a1a1a]">Forma que estiliza tu mano</h3>
+                <p class="mt-2 text-sm leading-relaxed text-zinc-500">Almendra para manos más finas, cuadrada pulida para un clásico atemporal, stiletto para un efecto joya. Te asesoramos con prueba visual.</p>
+                <a href="/#contacto" class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#0a0a0a] px-5 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:bg-[#3d2222]">Reservar ahora</a>
+                <p class="mt-3 text-center text-xs text-zinc-400">Relleno recomendado cada 2–3 semanas</p>
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-brand-200/40 bg-[#fdf6f3] p-6">
+              <h3 class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-700">¿Qué incluye?</h3>
+              <ul class="mt-3 space-y-2 text-sm leading-relaxed text-zinc-600">
+                <li class="flex gap-2"><span class="text-brand-400">•</span> Diagnóstico de forma y color gratuito</li>
+                <li class="flex gap-2"><span class="text-brand-400">•</span> Esculpido en gel premium sin tips</li>
+                <li class="flex gap-2"><span class="text-brand-400">•</span> Limado de estructura y laterales rectos</li>
+                <li class="flex gap-2"><span class="text-brand-400">•</span> Esmaltado y top coat brillo o mate</li>
+                <li class="flex gap-2"><span class="text-brand-400">•</span> Aceite, crema y cuidados post-servicio</li>
+              </ul>
+            </div>
+
+            <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+              <h3 class="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-800">Otros servicios en Madrid</h3>
+              <ul class="mt-4 space-y-3">
+                <li><a href="/servicios/manicura-madrid" class="flex items-center justify-between rounded-xl border border-black/5 bg-[#fdf6f3] px-4 py-3 text-sm font-medium text-[#1a1a1a] transition hover:border-brand-200 hover:text-brand-700"><span>Manicura en Madrid</span><span class="text-xs text-zinc-400">desde 25€</span></a></li>
+                <li><a href="/servicios/nail-art-madrid" class="flex items-center justify-between rounded-xl border border-black/5 bg-white px-4 py-3 text-sm font-medium text-[#1a1a1a] transition hover:border-brand-200 hover:text-brand-700"><span>Nail Art en Madrid</span><span class="text-xs text-zinc-400">desde 30€</span></a></li>
+                <li><a href="/servicios/pedicura-madrid" class="flex items-center justify-between rounded-xl border border-black/5 bg-white px-4 py-3 text-sm font-medium text-[#1a1a1a] transition hover:border-brand-200 hover:text-brand-700"><span>Pedicura en Madrid</span><span class="text-xs text-zinc-400">desde 35€</span></a></li>
+                <li><a href="/servicios" class="flex items-center justify-center rounded-xl bg-black px-4 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#3d2222]">Ver todos →</a></li>
+              </ul>
+            </div>
+
+            <div class="rounded-2xl bg-black p-6 text-white">
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-brand-300">Salamanca • Chamartín • Nuevos Ministerios</p>
+              <h3 class="mt-2 font-serif text-lg font-semibold">¿Primera vez con gel?</h3>
+              <p class="mt-2 text-sm leading-relaxed text-white/70">Te explicamos cuidados, duración y retirada segura. Llevar gel no debe dañar tu uña natural si se hace bien.</p>
+              <a href="https://www.google.com/maps/search/?api=1&query=Calle+Serrano+42+Madrid" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-300 hover:text-white hover:underline underline-offset-4">Cómo llegar a Serrano 42 <Icon name="lucide:arrow-right" class="size-3.5" aria-hidden="true" /></a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-black/[0.06] bg-[#fdf6f3] py-12 sm:py-16">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl">
+          <h2 class="font-serif text-2xl font-bold tracking-tight text-[#1a1a1a] sm:text-3xl">Preguntas sobre uñas de gel en Madrid</h2>
+          <div class="mt-8 space-y-6">
+            <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+              <h3 class="font-semibold text-[#1a1a1a]">¿Cuánto tiempo y cuánto cuesta?</h3>
+              <p class="mt-2 text-sm leading-relaxed text-zinc-600">90–120 min según largo y diseño, desde 45€ en Serrano 42, Salamanca. Relleno desde 35€ en 60–75 min.</p>
+            </div>
+            <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+              <h3 class="font-semibold text-[#1a1a1a]">¿Se puede añadir nail art?</h3>
+              <p class="mt-2 text-sm leading-relaxed text-zinc-600">Sí, sobre gel puedes añadir <a href="/servicios/nail-art-madrid" class="font-semibold text-brand-600 hover:underline">nail art en Madrid</a> — francés, baby boomer, cromados o piedras — sin perder ligereza.</p>
+            </div>
+            <div class="rounded-2xl border border-black/5 bg-white p-6 shadow-sm">
+              <h3 class="font-semibold text-[#1a1a1a]">¿Dónde reservo?</h3>
+              <p class="mt-2 text-sm leading-relaxed text-zinc-600">En <a href="/#contacto" class="font-semibold text-brand-600 hover:underline">/#contacto</a> reservas online en 30 segundos, o por WhatsApp. Estamos en Calle Serrano 42, 28001 Madrid, barrio de Salamanca, junto a Chamartín.</p>
+            </div>
+          </div>
+          <div class="mt-8 text-center">
+            <a href="/#contacto" class="inline-flex items-center gap-2 rounded-full bg-[#d48a8a] px-7 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white shadow transition hover:bg-[#c27474]">Reservar uñas de gel en Madrid</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

@@ -7,27 +7,27 @@
 const images = [
   {
     src: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=800&auto=format&fit=crop',
-    alt: 'Manicura clásica con esmalte nude elegante',
+    alt: 'Manicura clásica con esmalte nude elegante en Madrid — Luxe Nail Studio Serrano 42',
   },
   {
     src: 'https://images.unsplash.com/photo-1519014816548-bf5fe059798b?q=80&w=800&auto=format&fit=crop',
-    alt: 'Detalle de uñas con acabado brillante',
+    alt: 'Detalle de uñas de gel con acabado brillante en Madrid — salón Salamanca',
   },
   {
     src: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=800&auto=format&fit=crop',
-    alt: 'Nail art minimalista en tonos rosa',
+    alt: 'Nail art minimalista en tonos rosa — manicura en Madrid Luxe Nail Studio',
   },
   {
     src: 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=800&auto=format&fit=crop',
-    alt: 'Uñas con gel extensions perfectamente esculpidas',
+    alt: 'Uñas con extensiones de gel esculpidas en Madrid — estudio Serrano 42 Salamanca',
   },
   {
     src: 'https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=800&auto=format&fit=crop',
-    alt: 'Frasco de esmalte rosa — colección Luxe',
+    alt: 'Frasco de esmalte rosa — colección Luxe Nail Studio Madrid',
   },
   {
     src: 'https://images.unsplash.com/photo-1600948836101-f9ffda59d250?q=80&w=800&auto=format&fit=crop',
-    alt: 'Salón de manicura — ambiente boutique Luxe',
+    alt: 'Interior boutique del salón de manicura Luxe en Serrano 42, Salamanca, Madrid',
   },
 ];
 ---
@@ -38,23 +38,24 @@ const images = [
   class="bg-white py-20 sm:py-28 lg:py-32"
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    {/* Encabezado */}
+    {/* Encabezado — H2 geo-optimizado */}
     <div class="mx-auto max-w-3xl text-center">
       <p
         class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-500 sm:text-sm"
       >
-        Nuestro trabajo
+        Nuestro trabajo en Madrid
       </p>
       <h2
         id="galeria-title"
         class="mt-3 font-serif text-4xl font-semibold tracking-[0.04em] text-[#0a0a0a] sm:text-5xl lg:text-[3.4rem]"
       >
-        GALERÍA LUXE
+        <span class="block">GALERÍA LUXE:</span>
+        <span class="block text-brand-500 text-3xl sm:text-4xl lg:text-[2.2rem] mt-2">Uñas en Madrid</span>
       </h2>
       <div class="mx-auto mt-5 h-px w-16 bg-brand-300" aria-hidden="true"></div>
       <p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-zinc-500 sm:text-lg">
-        Un vistazo a nuestro universo — detalles impecables, tonos sofisticados
-        y acabados que enamoran.
+        Un vistazo a nuestro universo en Serrano 42, barrio de Salamanca — manicura, gel y nail art
+        con detalles impecables y acabados que enamoran a clientas de Chamartín y todo Madrid centro.
       </p>
     </div>
 
@@ -85,14 +86,29 @@ const images = [
       }
     </div>
 
+    {/* Distribución link equity — enlaza a servicios indexables */}
+    <div class="mt-10 flex flex-wrap justify-center gap-2">
+      <a href="/servicios/manicura-madrid" class="rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-zinc-700 shadow-sm transition hover:border-brand-300/40 hover:text-brand-600">Manicura en Madrid</a>
+      <a href="/servicios/unas-gel-madrid" class="rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-zinc-700 shadow-sm transition hover:border-brand-300/40 hover:text-brand-600">Uñas de Gel en Madrid</a>
+      <a href="/servicios/nail-art-madrid" class="rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-zinc-700 shadow-sm transition hover:border-brand-300/40 hover:text-brand-600">Nail Art en Madrid</a>
+      <a href="/servicios/pedicura-madrid" class="rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-zinc-700 shadow-sm transition hover:border-brand-300/40 hover:text-brand-600">Pedicura en Madrid</a>
+    </div>
+    <p class="mt-8 text-center">
+      <a href="/servicios" class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 underline-offset-4 hover:underline">Ver todos los servicios de manicura en Madrid <span aria-hidden="true">→</span></a>
+    </p>
+
     <p class="mt-10 text-center text-sm font-semibold uppercase tracking-[0.18em] text-zinc-500 sm:text-[15px]">
       Síguenos en <a
         href="https://instagram.com/luxenailstudio"
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Ver galería de uñas en Madrid en Instagram Luxe Nail Studio"
         class="inline-flex items-center gap-1 font-bold text-brand-600 underline-offset-4 hover:underline text-base sm:text-lg"
         >@luxenailstudio</a
-      > <span class="block mt-2 text-xs font-normal normal-case tracking-normal text-zinc-400 sm:text-sm">para más inspiración diaria</span>
+      > <span class="block mt-2 text-xs font-normal normal-case tracking-normal text-zinc-400 sm:text-sm">manicura y nail art diario desde Salamanca, Madrid</span>
     </p>
+    <div class="mt-6 text-center">
+      <a href="/#contacto" aria-label="Reservar manicura en Madrid — ver galería y pedir cita" class="inline-flex items-center gap-2 rounded-full bg-[#0a0a0a] px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-[#3d2222]">Reservar manicura en Madrid</a>
+    </div>
   </div>
 </section>
